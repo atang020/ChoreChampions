@@ -6,9 +6,11 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var handlebars = require('express3-handlebars');
 
-var index = require('./routes/index');
+var homeScreen = require('./routes/home');
+var landing = require('./routes/landing');
+var house = require('./routes/house');
 // Example route
 // var user = require('./routes/user');
 
@@ -24,7 +26,7 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
-app.use(express.cookieParser('Intro HCI secret key'));
+app.use(express.cookieParser('PUT THE KEY FOR THIS IN A HIDDEN DOTFILE!'));
 app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -35,7 +37,10 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', index.view);
+app.get('/', landing.view);
+app.get('/home', homeScreen.view);
+app.get('/create', house.create);
+app.get('/join', house.join);
 // Example route
 // app.get('/users', user.list);
 
