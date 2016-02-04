@@ -8,10 +8,10 @@ exports.view = function(req, res) {
   res.render('index', {
     gold: 1337,
     nextDealt: 'Tues 9:45 PST',
-    chores: {
+    chore: {
       count: 28,
       mine: 4,
-      unverified: 10
+      unverified: 2
     }
   });
 };
