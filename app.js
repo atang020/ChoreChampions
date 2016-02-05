@@ -11,6 +11,12 @@ var handlebars = require('express3-handlebars');
 var homeScreen = require('./routes/home');
 var landing = require('./routes/landing');
 var house = require('./routes/house');
+var mychores = require('./routes/mychores');
+var verifychores = require('./routes/verifychores');
+var allchores = require('./routes/allchores');
+var settings = require('./routes/settings');
+var store = require('./routes/store');
+
 // Example route
 // var user = require('./routes/user');
 
@@ -43,6 +49,12 @@ app.get('/create', house.create);
 app.get('/join', house.join);
 // Example route
 // app.get('/users', user.list);
+app.get('/mychores/', mychores.viewProject);
+app.get('/verifychores/', verifychores.viewProject);
+app.get('/allchores/', allchores.viewProject);
+app.get('/settings/', settings.viewProject);
+app.get('/store', store.viewProject);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
