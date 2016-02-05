@@ -1,13 +1,82 @@
+<!doctype html>
+
 <html>
 <head>
+	<title>Chore Champs - Home</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<!-- this is a comment in HTML -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->   
+    {{!-- TODO: USE ACTUAL jQuery from our filesystem --}}
+	<script src="js/lib/jquery-1.12.0.min.js"></script>
+    <script src="js/pages/landing.js"></script>     
 </head>
+
 <body>
-	<p>Laziest bloody landing page on this side of the Mississippi.</p>
-	<a href="/create">Create A House</a>
-	<a href="/join">Join A House</a>
-	<p>
-		for now we'll need to make sure the create AND join routes
-		set the cookie so we can proceed to the home screen.
-	</p>
+	<nav class="navbar-inverse navbar-static-top">
+		<div class="container">
+			<h1 class="navbar-text">Chore Champions</h1>
+		</div>
+	</nav>
+	
+	<div class="container">
+		<br/>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="jumbotron">
+				<h1>Welcome!</h1>
+				<p>
+				Chore Champions is a competitive trading card game about keeping your home clean. If
+				you'd like to set up the game for your house, please click on "Create A House". If 
+				someone else has already set up the game for you, click "Join"!
+				</p>
+				<p>
+					<a class="btn btn-success btn-lg" id="create-btn"href="#" role="button">Create A House</a>
+					<a class="btn btn-primary btn-lg" id="join-btn"href="#" role="button">Join An Existing House</a>
+				</p>
+				<div class="hidden" id="create-form">
+					<form action="/create" action="get">
+						<div class="form-group">
+							<label for="">House Code</label>
+							<input type="text" name="houseCode" class="form-control" value="dfe43sade"/>
+						</div>
+						<div class="form-group">
+							<label for="">Username</label>
+							<input type="text" name="username" class="form-control" value=""/>
+						</div>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+				<div class="hidden" id="join-form">
+					<form action="/join" action="get">
+						<div class="form-group">
+							<label for="">House Code</label>
+							<input type="text" class="form-control" value="dfe43sade"/>
+						</div>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div>
+			</div>
+		</div>
+		<footer class="row">
+			<!-- This is crappy and we'll need to use an actual sticky footer plugin, but for now it's fine -->
+			<p class="text-center">
+				Copyright Team Mech, 2016
+			</p>
+		</footer>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
