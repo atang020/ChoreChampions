@@ -13,7 +13,7 @@ var mychores = require('./routes/mychores');
 var verifychores = require('./routes/verifychores');
 var allchores = require('./routes/allchores');
 var settings = require('./routes/settings');
-
+var store = require('./routes/store');
 
 // Example route
 // var user = require('./routes/user');
@@ -48,7 +48,7 @@ app.get('/mychores/', mychores.viewProject);
 app.get('/verifychores/', verifychores.viewProject);
 app.get('/allchores/', allchores.viewProject);
 app.get('/settings/', settings.viewProject);
-
+app.get('/store', store.viewProject);
 
 
 http.createServer(app).listen(app.get('port'), function(){

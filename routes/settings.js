@@ -1,5 +1,7 @@
 exports.viewProject = function(req, res){
   res.render('settings', {
-    'name' : "fubar"
+   	'gold': 1337,
+    'nextDealt': 'Tues 9:45 PST',
+    
   });
 };
