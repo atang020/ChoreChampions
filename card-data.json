@@ -1,0 +1,18 @@
+{
+	"cards": [
+		{
+			"name": "Clean Stove",
+			"id": "k00",
+			"reward": "50",
+			"imageURL": "http://www.lpappliances.com/images/Verona/24SIDE.jpg",
+			"requirements": "No oil residue or gunk left on the stovetops."			
+		},
+		{
+			"name": "Empty Trash",
+			"id":"k01",
+			"reward":"15",
+			"imageURL": "http://ecx.images-amazon.com/images/I/71XkA0WKZ0L._SL1500_.jpg",
+			"requirements":"Empty the trash in the kitchen into the trash cans outside."
+		}
+	]
+}

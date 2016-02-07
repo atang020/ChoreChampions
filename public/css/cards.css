@@ -1,0 +1,55 @@
+.card {
+	background-color: #66DDFF;
+	width: 350px;
+	height: 490px;
+	border: 10px solid #000000;
+}
+
+.card-contents{
+	margin: 8px;
+}
+
+.card-header{
+	border: 3px solid #000000;
+	background-color: #66CCFF;
+}
+
+.gold-img{
+	float:right;
+	max-width: 13%;
+	max-height: 13%;
+	margin-top: 5px;
+}
+
+.card-name{
+	margin-left: 5px;
+	float: left;
+	font-weight: bold;
+}
+
+.card-reward{
+	margin-right: 5px;
+	float: right;
+	font-weight: bold;
+}
+
+.card-img{
+	margin-top: 2px;
+	margin-bottom: 2px;
+	border: 3px solid #000000;
+	display: block;
+	max-height: 25%;
+  	max-width: 100%;
+}
+
+.card-requirements{
+	margin-top: 2px;
+	margin-bottom: 2px;
+	border: 3px solid #000000;
+	background-color: #F0F0F0;
+	height:100%;
+}
+
+.card-requirements-text{
+	font-weight: bold;
+}
