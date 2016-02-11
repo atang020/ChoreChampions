@@ -2,14 +2,14 @@
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
-	initializePage();
+  initializePage();
 })
 
 /*
  * Function that is called when the document is ready.
  */
 function initializePage() {
-	console.log("Javascript connected!");
+  console.log("Javascript connected!");
 }
 
 $(".fubar").click(function(){

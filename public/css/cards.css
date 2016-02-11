@@ -12,6 +12,10 @@ body {
 	perspective: 800px; /* not sure if I need this...*/
 }
 
+/*
+ * For explanation on what's going on, check this out:
+ * https://desandro.github.io/3dtransforms/docs/card-flip.html
+ */
 .card {
 	background-color: #66DDFF;
 	width: 100%;
@@ -19,58 +23,83 @@ body {
 	border: 10px solid #000000;
 	border-radius: 16px; /* to make it look for like MtG cards */
 	transform-style: preserve-3d;
-	transition: transform 1s;
+	transition: transform 0.75s;
 }
 
-/*** FRONT OF CARD ***/
+.card .front {
+	margin: 0;
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+
+.card .back {
+	background: yellow;
+	margin: 0;
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+}
+
 .card-contents {
 	margin: 8px;
 }
 
-.card-header{
+/* To make the card flip, just toggle this class */
+.card.flipped {
+	transform: rotateY(180deg);
+}
+
+/*** Styles for the front of the card ***/
+
+.card-header {
 	border: 3px solid #000000;
 	background-color: #66CCFF;
 }
 
-.gold-img{
+.gold-img {
 	float:right;
 	max-width: 13%;
 	max-height: 13%;
 	margin-top: 5px;
 }
 
-.card-name{
+.card-name {
 	margin-left: 5px;
 	float: left;
 	font-weight: bold;
 }
 
-.card-reward{
+.card-reward {
 	margin-right: 5px;
 	float: right;
 	font-weight: bold;
 }
 
-.card-img{
-	margin-top: 2px;
-	margin-bottom: 2px;
+.card-img {
+	margin-top: 5px;
 	border: 3px solid #000000;
 	display: block;
 	max-height: 25%;
   	max-width: 100%;
 }
 
-.card-requirements{
-	margin-top: 2px;
-	margin-bottom: 2px;
+.card-requirements {
+	margin-top: 5px;
 	border: 3px solid #000000;
 	background-color: #F0F0F0;
-	height:100%;
+	text-align: center;
 }
 
-.card-requirements-text{
+.card-requirements-text {
 	font-weight: bold;
+	font-size: 32px;
+	margin: 0;
 }
 
-/*** BACK OF CARD ***/
-
+/** TODO: Styles for the back of the card */

@@ -16,24 +16,7 @@
         </div>
         <ul class="list-cards">
           {{#each cards.cards}}
-          <div class="card-container">
-            <div class="card" id="{{id}}">
-              <div class="card-contents">
-                <div class="card-header">
-                  <h2 class="card-name">{{name}}</h2>
-                  <h2 class="card-reward">{{reward}}</h2>
-                  <img src="http://cliparts.co/cliparts/pT5/oAj/pT5oAjbkc.png" class="gold-img">
-                  <div style="clear: both;"></div>
-                </div>
-                
-                <img src="{{imageURL}}" width="320" height="320" class="card-img">
-
-                <div class="card-requirements">
-                  <p class="card-requirements-text">{{requirements}}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {{> flippable-card }}
           <hr>
           {{/each}}
         </ul>
@@ -52,6 +35,6 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/temp.js"></script>
+    <script src="/js/card-util.js"></script>
   </body>
 </html>
