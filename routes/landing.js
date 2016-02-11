@@ -6,7 +6,8 @@
  * This page also allows them to create/join a house.
  */
 
-var user = require('../middleware/login-redirect');
+var user = require('../common/user-common');
+var houses = require('../data/houses.json')
 
 exports.view = function(req, res) {
 	if ( user.isLoggedIn( req ) ) {

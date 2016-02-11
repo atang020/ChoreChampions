@@ -1,7 +1,7 @@
 /**
- * Detects whether cookies have been set. If there are
- * no cookies, we will need to redirect to the landing
- * page.
+ * Generic common login for dealing with user's and user data.
+ * I guess technically a lot of this should be in a model too,
+ * but for now it's okay.
  */
 
 var HOUSE_COOKIE_NAME = 'house';

@@ -8,6 +8,7 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
 
+// Controllers
 var homeScreen = require('./routes/home');
 var landing = require('./routes/landing');
 var house = require('./routes/house');
@@ -16,9 +17,6 @@ var verifychores = require('./routes/verifychores');
 var allchores = require('./routes/allchores');
 var settings = require('./routes/settings');
 var store = require('./routes/store');
-
-// Example route
-// var user = require('./routes/user');
 
 var app = express();
 
@@ -47,12 +45,10 @@ app.get('/', landing.view);
 app.get('/home', homeScreen.view);
 app.get('/create', house.create);
 app.get('/join', house.join);
-// Example route
-// app.get('/users', user.list);
-app.get('/mychores/', mychores.viewProject);
-app.get('/verifychores/', verifychores.viewProject);
-app.get('/allchores/', allchores.viewProject);
-app.get('/settings/', settings.viewProject);
+app.get('/mychores', mychores.viewProject);
+app.get('/verifychores', verifychores.viewProject);
+app.get('/allchores', allchores.viewProject);
+app.get('/settings', settings.viewProject);
 app.get('/store', store.viewProject);
 
 

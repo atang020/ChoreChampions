@@ -1,0 +1,15 @@
+{
+	"houses": [
+		{
+			"code": "a1b2c3d4",
+			"users": [
+				"Annie", "Beth", "Joseph", "Sam"
+			],
+			"bathrooms": 2,
+			"bedrooms": 3,
+			"settings": {
+				"default_rerolls": 2
+			}
+		}
+	]
+}

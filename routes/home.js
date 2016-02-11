@@ -7,7 +7,7 @@
  * Yeah, I know it's a bad name but it's late.
  */
 
-var user = require('../middleware/login-redirect');
+var user = require('../common/user-common');
 
 exports.view = function(req, res) {
   if ( user.isGuest( req ) ) {
@@ -16,7 +16,7 @@ exports.view = function(req, res) {
   // Crappy hardcoded demo data
   return res.render('home', {
     gold: 1337,
-    nextDealt: 'Tues 9:45 PST',
+    nextDeal: 'Tues 9:45 PST',
     chores: {
       count: 28,
       mine: 4,
