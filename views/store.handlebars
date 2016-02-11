@@ -12,17 +12,23 @@
     <div class="col-xs-12">
       <br/>
       <div class="alert alert-info">
-      Hey! Buy some perks! To learn more about these perks, visit our <a href="http://example.com">tutorial</a>!
+      Hey! Buy some perks! To learn more about these perks, visit our <a href="#">tutorial</a>!
       </div>
-      <ul class="list-group">
-        {{#each inventory}}
-        <div>
-            <button class="fubar">{{name}} : {{price}} gold</button>
-        </div>
-        {{/each}}
-      </ul>
     </div>
   </div>
+
+  {{#each inventory}}
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="text-center">{{name}}</h1>
+      <img src="{{ imgURL }}" alt="" class="img-responsive center-block"/>
+      <h4 class="text-center">{{ description }}</h4>
+      <button class="btn btn-lg btn-default center-block">Buy ({{price}} gold)</button>
+    </div>
+  </div>
+  {{/each}}
+
+  <hr/>
   <footer class="row">
     <!-- This is crappy and we'll need to use an actual sticky footer plugin, but for now it's fine -->
     <p class="text-center">

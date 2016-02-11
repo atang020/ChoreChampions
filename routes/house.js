@@ -1,17 +1,19 @@
 /**
- * TODO: this is really a bad name.
+ * Controller for adding/removing users to a House,
+ * and manipulating House data.
  */
 
-var house = "HARDCODED BS";
+// TODO: Schema for this data is still TBD
+var houses = require('../data/houses.json');
 
 exports.create = function(req, res) {
 	res.cookie('house', house );
 	res.cookie('username', 'Bob');
-	return res.redirect('/home');
+	return res.redirect('/mychores');
 };
 
 exports.join = function(req, res) {
 	res.cookie('house', house );
 	res.cookie('username', 'Sally');
-	return res.redirect('/home');
+	return res.redirect('/mychores');
 };

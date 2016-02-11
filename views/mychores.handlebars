@@ -9,43 +9,37 @@
   {{> navbar }}
 	<div class="container">
     <div class="jumbotron">
-     <h1>{{name}}</h1>
-     <p>one-sentence description of project</p>
-   </div>
-
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus enim diam, adipiscing sodales sem ut, tristique suscipit odio. Nam mollis ipsum et venenatis euismod. Aliquam erat volutpat. Praesent placerat condimentum tristique. Morbi egestas dapibus viverra. Mauris sit amet dignissim risus, non elementum eros. Donec urna dui, placerat et feugiat non, vulputate in ipsum. Quisque dignissim pulvinar nisi. Quisque feugiat commodo dolor nec suscipit. Donec pretium scelerisque aliquet. Vivamus vitae turpis metus. Sed lobortis vitae orci sed gravida. Donec euismod ipsum sagittis pellentesque pellentesque. Aenean at lorem nec leo consequat tincidunt. Maecenas sit amet felis vel ante dictum suscipit quis nec magna. Sed augue velit, imperdiet quis mi a, porta aliquet urna.</p>
-
-		<p>Phasellus at neque eget sapien elementum sollicitudin. In odio mauris, pulvinar quis turpis sed, faucibus tristique leo. Phasellus a volutpat tortor. Nunc blandit imperdiet iaculis. Nam purus orci, placerat in venenatis ut, ultrices id dolor. Duis ornare erat lectus, at posuere justo mollis eu. Duis dictum feugiat imperdiet. Praesent vitae orci in eros semper lacinia a ut arcu. Cras vitae sapien et erat faucibus imperdiet nec a turpis. Integer at egestas ipsum, sed suscipit eros.</p>
-
-    <div class="row">
-      <div class="col-md-6">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>User</td>
-              <th>Salient need</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Schoolteacher</td>
-              <td>Wants to know what music students are listening to so he can integrate it into his lessons.</td>
-            </tr>
-            <tr>
-              <td>Student 5th grade</td>
-              <td>Desire to be seen as a tastemaker for her friends. Hears about new music from older sister in middle school.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="col-md-6">
-        <img src="http://lorempixel.com/g/520/150/technics" alt="Lorem Pixel image" class="img">
-      </div>
+      <h1>My Chores</h1>
+      {{#if chores }}
+      <p>Hi, {{ username }}. You have {{ chores.length }} unfinished chores this week. Get to it!</p>
+      {{else}}
+      <p>Hi, {{ username }}. Looks like you've finished all your chores this week.</p>
+      {{/if}}
     </div>
 
-		<p>Sed vitae ultricies magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce pulvinar sapien eget lacus volutpat suscipit. Duis bibendum condimentum sapien, quis vulputate turpis ultricies sit amet. Quisque sollicitudin vitae ipsum vel scelerisque. Aliquam facilisis eros eros, in ultricies erat aliquam nec. Suspendisse nec egestas arcu. Sed nec malesuada turpis. Proin eu lorem sed mauris bibendum consectetur sit amet mattis arcu. Aliquam porta ligula in nulla ullamcorper, at pulvinar diam porta.</p>
+    <ul class="list-cards">
+      {{#each chores }}
+      <div class="card-container">
+        <div class="card" id="{{id}}">
+          <div class="card-contents">
+            <div class="card-header">
+              <h2 class="card-name">{{name}}</h2>
+              <h2 class="card-reward">{{reward}}</h2>
+              <img src="http://cliparts.co/cliparts/pT5/oAj/pT5oAjbkc.png" class="gold-img">
+              <div style="clear: both;"></div>
+            </div>
+            
+            <img src="{{imageURL}}" width="320" height="320" class="card-img">
 
-    <p><a href="index.html">Back &raquo;</a></p>
+            <div class="card-requirements">
+              <p class="card-requirements-text">{{requirements}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      {{/each}}
+    </ul>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>

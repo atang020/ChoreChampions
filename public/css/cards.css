@@ -3,14 +3,27 @@ body {
 	padding-top: 70px;
 }
 
-.card {
-	background-color: #66DDFF;
+/* Must be above the .card class. 
+   Handles the base transform in CSS 3D */
+.card-container {
+	position: relative;
 	width: 350px;
 	height: 490px;
-	border: 10px solid #000000;
+	perspective: 800px; /* not sure if I need this...*/
 }
 
-.card-contents{
+.card {
+	background-color: #66DDFF;
+	width: 100%;
+	height: 100%;
+	border: 10px solid #000000;
+	border-radius: 16px; /* to make it look for like MtG cards */
+	transform-style: preserve-3d;
+	transition: transform 1s;
+}
+
+/*** FRONT OF CARD ***/
+.card-contents {
 	margin: 8px;
 }
 
@@ -58,3 +71,6 @@ body {
 .card-requirements-text{
 	font-weight: bold;
 }
+
+/*** BACK OF CARD ***/
+

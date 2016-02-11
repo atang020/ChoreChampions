@@ -13,10 +13,11 @@ exports.view = function(req, res) {
 	if ( user.isLoggedIn( req ) ) {
 		// If we're logged in (e.g. the cookie exists)
 		// then redirect to the home page.
-		res.redirect('/home');
+		return res.redirect('/mychores');
 	}
 	// console.log(req.cookies);
 	return res.render('landing', {
-
+		'title': 'Chore Champions',
+		'navbar': user.getNavbarData()
 	});
 };
