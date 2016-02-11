@@ -11,6 +11,11 @@ $(document).on('ready', function cardUtilOnReady() {
 
 	console.log('Loaded card-util.js');
 
+	var navbarMargin = 70; // in pixels. Look at the bootstrap navbar-fixed-top CSS for why
+	var desiredCardHeight = document.documentElement.clientHeight - (navbarMargin * 2);
+
+	// $('.card').css('height', desiredCardHeight + 'px');
+
 	// Flip the card when clicked
 	$('.card').on('click', function onCardClicked() {
 		$(this).toggleClass('flipped');

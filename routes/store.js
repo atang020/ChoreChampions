@@ -1,6 +1,9 @@
 var user = require('../common/user-common');
 
 exports.viewProject = function(req, res){
+  if ( user.isGuest( req ) ) {
+    return res.redirect('/');
+  }
   res.render('store', {
     'title': 'Store',
     'navbar': user.getNavbarData(),
