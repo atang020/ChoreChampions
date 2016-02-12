@@ -1,4 +1,4 @@
-<div class="card-container">
+<div class="card-container center-block">
   <div class="card" id="{{id}}">
     <div class="front">
       <div class="card-contents">
@@ -9,7 +9,7 @@
           <div style="clear: both;"></div>
         </div>
         
-        <img src="{{imageURL}}" width="320" height="320" class="card-img">
+        <img src="{{imageURL}}" width="320" height="320" class="card-img img-responsive">
 
         <div class="card-requirements">
           <p class="card-requirements-text">Flip For Details</p>
@@ -18,7 +18,24 @@
     </div>
     <div class="back">
       <div class="card-contents">
-        
+        {{!-- List the card description bullets here --}}
+        <ul class="card-reqs">
+          {{#each requirements}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+        <p class="text-center"> 
+          <form action="/chores/submit" method="POST"> 
+          {{!-- TODO: this is a TERRIBLE way to do this, but it's temporary --}}
+            <input type="hidden" name="id" value="{{id}}"/>
+            <input type="hidden" name="name" value="{{name}}"/> 
+            <input type="hidden" name="verifyBonus" value="{{verifyBonus}}"/>   
+            <input type="hidden" name="belongsTo" value="{{belongsTo}}"/>   
+   
+
+            <button type="submit" class="btn btn-success">Complete Chore!</button>
+          </form>
+        </p>
       </div>
     </div>
   </div>

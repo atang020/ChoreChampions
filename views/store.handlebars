@@ -23,7 +23,8 @@
       <h1 class="text-center">{{name}}</h1>
       <img src="{{ imgURL }}" alt="" class="img-responsive center-block"/>
       <h4 class="text-center">{{ description }}</h4>
-      <button class="btn btn-lg btn-default center-block">Buy ({{price}} gold)</button>
+      <button class="store-item btn btn-lg btn-default center-block">Buy ({{price}} gold)</button>
+      <input type="hidden" value="{{price}}" class="price-hack"/>
     </div>
   </div>
   {{/each}}

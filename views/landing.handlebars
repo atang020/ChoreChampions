@@ -8,58 +8,83 @@
 
 <body>
 	<nav class="navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<h1 class="navbar-text">Chore Champions</h1>
+		<div class="container-fluid">
+			<span class="navbar-brand">Chore Champions</span>
 		</div>
 	</nav>
-	
 	<div class="container">
-		<br/>
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="jumbotron">
-				<h1>Welcome!</h1>
-				<p>
-				Chore Champions is a competitive trading card game about keeping your home clean. If
-				you'd like to set up the game for your house, please click on "Create A House". If 
-				someone else has already set up the game for you, click "Join"!
-				</p>
-				<p>
-					<a class="btn btn-success btn-lg" id="create-btn"href="#" role="button">Create A House</a>
-					<a class="btn btn-primary btn-lg" id="join-btn"href="#" role="button">Join An Existing House</a>
-				</p>
+					<p>
+					<small>
+					Chore Champions is a competitive trading card game about keeping your home clean. To play, you must
+					either create a house or join a preexisting one.{{!--  If
+					you'd like to set up the game for your house, please click on "Create A House". If 
+					someone else has already set up the game for you, click "Join"! --}}
+					</small>
+					</p>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<p class="text-center">
+							<a class="btn btn-success btn-lg" id="create-btn"href="#create-form" role="button">Create</a>							
+						</p>
+					</div>
+					<div class="col-xs-6">
+						<p class="text-center">
+							<a class="btn btn-primary btn-lg" id="join-btn"href="#join-form" role="button">Join</a>
+						</p>
+					</div>
+				</div>
+			
 				<div class="hidden" id="create-form">
-					<form action="/create" action="get">
+					<form action="/create" action="GET">
 						<div class="form-group">
 							<label for="">House Code</label>
-							<input type="text" name="houseCode" class="form-control" value="dfe43sade"/>
+							<input type="text" name="houseCode" class="form-control" value="dfe43sade" disabled/>
 						</div>
 						<div class="form-group">
 							<label for="">Username</label>
-							<input type="text" name="username" class="form-control" value=""/>
+							<input type="text" name="username" class="form-control" value="Bob" required/>
+						</div>
+						<div class="form-group">
+							<label for="">Bedrooms</label>
+							<select name="beds" id="" class="form-control">
+								<option value="1" class="form-control">1 bedroom</option>
+								<option value="2" class="form-control">2 bedrooms</option>
+								<option value="3" class="form-control">3 bedrooms</option>
+								<option value="4+" class="form-control">4+ bedrooms</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="">Bathrooms</label>
+							<select name="baths" id="" class="form-control">
+								<option value="1" class="form-control">1 bathroom</option>
+								<option value="2" class="form-control">2 bathrooms</option>
+								<option value="3" class="form-control">3 bathrooms</option>
+								<option value="4+" class="form-control">4+ bathrooms</option>
+							</select>
 						</div>
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>
 				<div class="hidden" id="join-form">
-					<form action="/join" action="get">
+					<form action="/join" action="GET">
 						<div class="form-group">
 							<label for="">House Code</label>
-							<input type="text" class="form-control" value="dfe43sade"/>
+							<input type="text" name="houseCode" class="form-control" value="" placeholder="Enter Code Here!" required/>
+						</div>
+						<div class="form-group">
+							<label for="">Username</label>
+							<input type="text" name="username" class="form-control" value="Salley" required/>
 						</div>
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>
 			</div>
-			</div>
 		</div>
-		<footer class="row">
-			<!-- This is crappy and we'll need to use an actual sticky footer plugin, but for now it's fine -->
-			<p class="text-center">
-				Copyright Team Mech, 2016
-			</p>
-		</footer>
-
+		{{> footer }}
 	</div>
 
 	<script src="https://code.jquery.com/jquery.js"></script>

@@ -7,7 +7,7 @@ body {
    Handles the base transform in CSS 3D */
 .card-container {
 	position: relative;
-	width: 350px;
+	max-width: 350px;
 	height: 490px;
 	perspective: 800px; /* not sure if I need this...*/
 }
@@ -102,4 +102,8 @@ body {
 	margin: 0;
 }
 
-/** TODO: Styles for the back of the card */
+/** Styles for the back of the card */
+ul.card-reqs {
+	padding-left: 20px;
+	font-size: 20pt;
+}
