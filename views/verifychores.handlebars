@@ -17,17 +17,22 @@
 
 		<p></p>
 
+    <h3>Pending Approval</h3>
     <div class="list-group">
     {{#if pending }}
     {{#each pending }}
       <div class="list-group-item">
         <h4 class="list-group-heading">{{ name }}</h4>
         <p class="list-group-item-text">
-          Submitted By: {{ belongsTo }}<br/>
-          Verify Bonus: {{ verifyBonus }} gold
+          Submitted By: <span class="belongsTo">{{ belongsTo }}</span><br/>
+          Verify Bonus: <span class="verifyBonus">{{ verifyBonus }}</span> gold
         </p>
+        <h5>
+          Did they do a good job?
+        </h5>
+        <span class="hidden id">{{ id }}</span>
         <button type="submit" class="btn btn-success approve-chore"><span class="glyphicon glyphicon-ok"></span></button>
-        <button type="submit" class="btn btn-danger deny-chore"><span class="glyphicon glyphicon-remove"></span></button>
+        <button type="submit" class="btn btn-danger reject-chore"><span class="glyphicon glyphicon-remove"></span></button>
       </div>
     {{/each}}
     {{else}}
@@ -39,6 +44,7 @@
     {{/if}}
     </div>
 
+    <h3>Completed</h3>
     <div class="list-group">
     {{#if completed }}
     {{#each completed }}

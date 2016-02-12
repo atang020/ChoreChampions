@@ -8,8 +8,10 @@
 
 var HOUSE_COOKIE_NAME = 'house';
 var USER_COOKIE_NAME = 'username';
+var SUPPRESS_TUTORIAL = 'suppress-tutorial';
 
 var cardData = require('../data/cards.json');
+var choresDB = require('../data/choresDB.json');
 
 module.exports.isGuest = isGuest;
 module.exports.isLoggedIn = isLoggedIn;
@@ -66,7 +68,22 @@ module.exports.getHand = function( req ) {
 		for (var i = 0; i < cardData.cards.length; ++i ) {
 			var card = cardData.cards[i];
 			if ( card.belongsTo == user ) {
-				hand.push(card);
+				// Now make sure the same card isn't in choresDB as pending, etc...
+				// Dat O(n) search doe... 
+				var include = true;
+				for ( var i = 0; i < choresDB.pending.length; ++i ) {
+					if ( choresDB.pending[i].id == card.id ) {
+						include = false;
+					}
+				}
+				for ( var i = 0; i < choresDB.completed.length; ++i ) {
+					if ( choresDB.completed[i].id == card.id ) {
+						include = false;
+					}
+				}
+				if ( include == true ) {
+					hand.push(card);
+				}
 			}
 		}
 		return hand;
