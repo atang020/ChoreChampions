@@ -7,13 +7,17 @@
 var houses = require('../data/houses.json');
 
 exports.create = function(req, res) {
-	res.cookie('house', houses );
-	res.cookie('username', 'Bob');
+	var house = req.query.house || '';
+	var username = req.query.username || '';
+	res.cookie('house', house );
+	res.cookie('username', username );
 	return res.redirect('/mychores');
 };
 
 exports.join = function(req, res) {
-	res.cookie('house', houses );
-	res.cookie('username', 'Sally');
+	var house = req.query.house || '';
+	var username = req.query.username || '';
+	res.cookie('house', house );
+	res.cookie('username', username );
 	return res.redirect('/mychores');
 };

@@ -10,30 +10,31 @@
   {{> navbar }}
   <div class="container" margin="auto">
     <form action="" method="post">
-      <label>Cards are dealt every: </label> 
-      <select>
-        <option value="Sunday">Sunday</option>
-        <option value="Monday">Monday</option>
-        <option value="Tuesday">Tuesday</option>
-        <option value="Wednesday">Wednesday</option>
-        <option value="Thursday">Thursday</option>
-        <option value="Friday">Friday</option>
-        <option value="Saturday">Saturday</option>
-      </select>
+      <div class="form-group">
+        <label>Cards are dealt every: </label> 
+        <select class="form-control">
+          <option value="Sunday">Sunday</option>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+        </select>
 
-      <br/>
-      <label>at</label>
-      <select>
-        <option value="8am">8am</option>
-        <option value="9am">9am</option>
-        <option value="10am">10am</option>
-        <option value="11am">11am</option>
-        <option value="12pm">12pm</option>
-      </select>
-
-      <br/>
-      <br/>
-      <button class="saveChanges">Save Changes</button>
+        <br/>
+        <label>at</label>
+        <select class="form-control">
+          <option value="8am">8am</option>
+          <option value="9am">9am</option>
+          <option value="10am">10am</option>
+          <option value="11am">11am</option>
+          <option value="12pm">12pm</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success form-control">Save Changes</button>        
+      </div>
     </form>
   </div>
     <footer class="row">

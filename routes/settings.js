@@ -5,8 +5,7 @@ exports.viewProject = function(req, res){
   	return res.redirect('/');
   }
   res.render('settings', {
-   	'gold': 1337,
-    'nextDealt': 'Tues 9:45 PST',
+   	'navbar': user.getNavbarData(),
     'title': 'House Settings'
   });
 };
