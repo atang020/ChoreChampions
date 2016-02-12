@@ -26,8 +26,8 @@
           Submitted By: {{ belongsTo }}<br/>
           Verify Bonus: {{ verifyBonus }} gold
         </p>
-        <button class="btn btn-success approve-chore"><span class="glyphicon glyphicon-ok"></span></button>
-        <button class="btn btn-danger deny-chore"><span class="glyphicon glyphicon-remove"></span></button>
+        <button type="submit" class="btn btn-success approve-chore"><span class="glyphicon glyphicon-ok"></span></button>
+        <button type="submit" class="btn btn-danger deny-chore"><span class="glyphicon glyphicon-remove"></span></button>
       </div>
     {{/each}}
     {{else}}
@@ -64,6 +64,6 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/card-util.js"></script>
+    <script src="/js/pages/verify.js"></script>
   </body>
 </html>

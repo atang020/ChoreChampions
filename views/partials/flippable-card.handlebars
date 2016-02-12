@@ -24,8 +24,17 @@
           <li>{{this}}</li>
           {{/each}}
         </ul>
-        <p class="text-center">        
-          <a href="/verifychores" class="btn btn-success">Complete Chore!</a>
+        <p class="text-center"> 
+          <form action="/chores/submit" method="POST"> 
+          {{!-- TODO: this is a TERRIBLE way to do this, but it's temporary --}}
+            <input type="hidden" name="id" value="{{id}}"/>
+            <input type="hidden" name="name" value="{{name}}"/> 
+            <input type="hidden" name="verifyBonus" value="{{verifyBonus}}"/>   
+            <input type="hidden" name="belongsTo" value="{{belongsTo}}"/>   
+   
+
+            <button type="submit" class="btn btn-success">Complete Chore!</button>
+          </form>
         </p>
       </div>
     </div>

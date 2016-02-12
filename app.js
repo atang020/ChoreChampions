@@ -51,6 +51,11 @@ app.get('/allchores', allchores.viewProject);
 app.get('/settings', settings.viewProject);
 app.get('/store', store.viewProject);
 
+// Handle POSTS
+app.post('/settings', settings.viewProject); // TODO: Temporary hack around the store
+app.post('/chores/submit', verifychores.submitForVerification);
+app.post('/chores/approve', verifychores.approve);
+app.post('/chores/reject', verifychores.reject);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
