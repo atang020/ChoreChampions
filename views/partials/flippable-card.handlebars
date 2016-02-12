@@ -18,7 +18,12 @@
     </div>
     <div class="back">
       <div class="card-contents">
-        
+        {{!-- List the card description bullets here --}}
+        <ul class="card-reqs">
+          {{#each requirements}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
       </div>
     </div>
   </div>

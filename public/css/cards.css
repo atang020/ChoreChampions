@@ -102,4 +102,8 @@ body {
 	margin: 0;
 }
 
-/** TODO: Styles for the back of the card */
+/** Styles for the back of the card */
+ul.card-reqs {
+	padding-left: 20px;
+	font-size: 20pt;
+}
