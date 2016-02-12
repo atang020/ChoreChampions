@@ -7,7 +7,7 @@
 var houses = require('../data/houses.json');
 
 exports.create = function(req, res) {
-	var house = req.query.house || '';
+	var house = req.query.houseCode || '';
 	var username = req.query.username || '';
 	res.cookie('house', house );
 	res.cookie('username', username );
@@ -15,7 +15,7 @@ exports.create = function(req, res) {
 };
 
 exports.join = function(req, res) {
-	var house = req.query.house || '';
+	var house = req.query.houseCode || '';
 	var username = req.query.username || '';
 	res.cookie('house', house );
 	res.cookie('username', username );

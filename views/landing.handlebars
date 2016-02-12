@@ -39,14 +39,14 @@
 				</div>
 			
 				<div class="hidden" id="create-form">
-					<form action="/create" action="get">
+					<form action="/create" action="GET">
 						<div class="form-group">
 							<label for="">House Code</label>
 							<input type="text" name="houseCode" class="form-control" value="dfe43sade" disabled/>
 						</div>
 						<div class="form-group">
 							<label for="">Username</label>
-							<input type="text" name="username" class="form-control" value="" required/>
+							<input type="text" name="username" class="form-control" value="Bob" required/>
 						</div>
 						<div class="form-group">
 							<label for="">Bedrooms</label>
@@ -70,14 +70,14 @@
 					</form>
 				</div>
 				<div class="hidden" id="join-form">
-					<form action="/join" action="get">
+					<form action="/join" action="GET">
 						<div class="form-group">
 							<label for="">House Code</label>
-							<input type="text" class="form-control" value="" placeholder="Enter Code Here!" required/>
+							<input type="text" name="houseCode" class="form-control" value="" placeholder="Enter Code Here!" required/>
 						</div>
 						<div class="form-group">
 							<label for="">Username</label>
-							<input type="text" class="form-control" value="Bob" required/>
+							<input type="text" name="username" class="form-control" value="Salley" required/>
 						</div>
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>
