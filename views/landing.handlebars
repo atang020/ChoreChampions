@@ -18,9 +18,9 @@
 				<div class="jumbotron">
 					<p>
 					<small>
-					Chore Champions is a competitive trading card game about keeping your home clean. To play, you must
-					either create a house or join a preexisting one.{{!--  If
-					you'd like to set up the game for your house, please click on "Create A House". If 
+					Chore Champions is a competitive trading card game about keeping your home clean. To get started, create a house or join a preexisting one.<br>If you'd like to learn more, click <a href="#" data-toggle="modal" data-target=
+					"#tutModal">here</a>.{{!--  If
+					you would like to set up the game for your house, please click on "Create A House". If 
 					someone else has already set up the game for you, click "Join"! --}}
 					</small>
 					</p>
@@ -85,6 +85,229 @@
 			</div>
 		</div>
 		{{> footer }}
+	</div>
+
+	<div class="modal fade" id="tutModal" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>To get started, you will need to create or join a house.</p>
+          			<img src="imgs/cc_tut_1.png">
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal2">Next</button>
+        		</div>
+      		</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="tutModal2" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>If you have fellow champions that wish to join your house, you will need to give them the generated house code.</p>
+          			<p>-OR-</p>
+          			<p>If you wish to join a house created by your fellow champion, you will need to get them to give you the generated house code.</p>
+          			<img src="imgs/cc_tut_2_2.png">
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal">Back</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal3">Next</button>
+        		</div>
+      		</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="tutModal3" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>Once you become part of a house, you may edit cards as you please by adding or removing them or by changing the name, frequency, image, or requirements of them. (Don't worry, you will always be able to.)</p>
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal2">Back</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal4">Next</button>
+        		</div>
+      		</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="tutModal4" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>The Hand will contain what cards you own. Mark cards for completion as you finish them. Earn the gold displayed when a fellow champion verifies it.</p>
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal3">Back</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal5">Next</button>
+        		</div>
+      		</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="tutModal5" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>Verify your fellow champion's cards that they have marked for completion.</p>
+          			<img src="imgs/cc_tut_5.png">
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal4">Back</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal6">Next</button>
+        		</div>
+      		</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="tutModal6" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>Editing cards can still be done here.</p>
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal5">Back</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal7">Next</button>
+        		</div>
+      		</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="tutModal7" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>Settings is where the deal time can be changed and where your house code can be seen.</p>
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal6">Back</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal8">Next</button>
+        		</div>
+      		</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="tutModal8" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>The Dealer can be bribed with gold to swap out a card you may not want with a random one you don't own.</p>
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal7">Back</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal9">Next</button>
+        		</div>
+      		</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="tutModal9" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>Gold earned from your own completed, verified cards or earned from verifying other fellow champion's cards can be found in the navigational menu.</p>
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal8">Back</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal10">Next</button>
+        		</div>
+      		</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="tutModal10" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>The Next Deal indicating when new cards will be dealt can be found in the navigational menu as well.</p>
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal9">Back</button>
+          			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal11">Next</button>
+        		</div>
+      		</div>
+		</div>
+	</div>
+
+		<div class="modal fade" id="tutModal11" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">The Rundown</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p>Now you're ready to start!</p>
+        		</div>
+        		<div class="modal-footer">
+        			<button type="button" class-"btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#tutModal10">Back</button>
+          			<button type="button" class="btn btn-default" data-dismiss="modal">I got it!</button>		
+        		</div>
+      		</div>
+		</div>
 	</div>
 
 	<script src="https://code.jquery.com/jquery.js"></script>
