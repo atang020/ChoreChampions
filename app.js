@@ -65,6 +65,7 @@ app.post('/chores/reject', verifychores.reject);
 // POSTs for house creation/management
 app.post('/create', house.create);
 app.post('/join', house.join);
+app.post('/deal', house.deal);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

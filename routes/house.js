@@ -24,3 +24,13 @@ exports.join = function(req, res) {
 		return res.redirect('/mychores');
 	}
 };
+
+exports.deal = function(req, res) {
+	if ( user.isLoggedIn( req ) ) {
+		houses.deal( req );
+		return res.redirect('/mychores');
+	}
+	else {
+		return res.redirect('/');
+	}
+}

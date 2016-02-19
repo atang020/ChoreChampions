@@ -7,7 +7,8 @@ exports.viewProject = function(req, res) {
   }
   res.render('allchores', {
   	title: 'All Chores',
+  	withinRerollPeriod: false,
   	navbar: user.getNavbarData(),
-  	cards: house.getAllCards( req )
+  	'cards': house.getAllCards( req )
   });
 };

@@ -80,25 +80,15 @@ module.exports.getHand = function( req ) {
 		return {};
 	}
 	else {
-		var user = req.cookies[USER_COOKIE_NAME];
+		var userid = req.cookies[USER_COOKIE_ID];
 		var hand = [];
-		for (var i = 0; i < cardData.cards.length; ++i ) {
-			var card = cardData.cards[i];
-			if ( card.belongsTo == user ) {
-				// Now make sure the same card isn't in choresDB as pending, etc...
-				// Dat O(n) search doe... 
-				var include = true;
-				for ( var i = 0; i < choresDB.pending.length; ++i ) {
-					if ( choresDB.pending[i].id == card.id ) {
-						include = false;
-					}
-				}
-				for ( var i = 0; i < choresDB.completed.length; ++i ) {
-					if ( choresDB.completed[i].id == card.id ) {
-						include = false;
-					}
-				}
-				if ( include == true ) {
+		var cards = houses.getAllCards( req ).cards;
+		for (var i = 0; i < cards.length; ++i ) {
+			var card = cards[i];
+			// Card states:
+			//  'dealt', 'undealt', 'pending', 'verified'
+			if ( card.belongsTo == userid ) {
+				if ( card.status == 'dealt' ) {
 					hand.push(card);
 				}
 			}

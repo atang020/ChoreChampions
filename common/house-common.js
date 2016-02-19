@@ -20,8 +20,11 @@
 
 var DEFAULT_GOLD = 0;
 var DEFAULT_REROLLS = 1;
+var BOUNTY_INC = 10;
+
 var houseDB = require('../data/houses.json');
 var cardData = require('../data/cards.json');
+var shuffle = require('shuffle-array');
 
 module.exports.create = create;
 module.exports.addUserToHouse = addUserToHouse;
@@ -72,6 +75,55 @@ function create( req ) {
 	}
 };
 
+/**
+ * The dealer takes all the cards out from the verified
+ * pile and from all of the users in the house and
+ * redistributes them as equally as possible.
+ * @param  {[type]} req HTTP request
+ * @return {[type]}     [description]
+ */
+function deal(req) {
+	var house = getHouseFromReq(req);
+	if ( house != null ) {
+		if ( house.users.length > 0 ) {
+			// Fisher-Yates shuffle, thanks to internet
+			shuffle(house.cards.cards);
+			var userIndex = 0;
+			var cardList = house.cards.cards;
+			for ( var cardIndex = 0; cardIndex < cardList.length; ++cardIndex ) {
+				
+				var user = house.users[userIndex];
+
+				// If the current card wasn't verified last week,
+				// we should increase its bounty. Otherwise, it 
+				// should be reset
+				var card = cardList[cardIndex];
+
+				if ( card.status == 'verified' ) {
+					card.bounty = 0;
+				}
+				else {
+					card.bount += BOUNTY_INC;
+				}
+
+				card.status = 'dealt';
+				card.belongsTo = user.userid;
+
+				// Increment user index and wrap around if it's too big
+				userIndex = (userIndex + 1) % house.users.length;
+			}
+		}
+	}
+}
+module.exports.deal = deal;
+
+/**
+ * Adds a user to the requested house. Returns an HTTP response.
+ * Can either be success (redirects to home page) or returns to
+ * the landing page with an error string.
+ * @param {[type]} req HTTP request
+ * @param {[type]} res HTTP response
+ */
 function addUserToHouse(req, res) {
 	// Adds the requested user to the house, and logs him/her in
 	// via cookie. If the house does not exist, then we are redirected
@@ -104,6 +156,11 @@ function addUserToHouse(req, res) {
 	return res.redirect('/mychores');
 }
 
+/**
+ * Returns all of the cards for this house as a list.
+ * @param  {[type]} req HTTP request
+ * @return {list}     list of Card objects
+ */
 function getAllCards( req ) {
 	var house = getHouseFromReq( req );
 	if ( house != null ) {
@@ -112,6 +169,10 @@ function getAllCards( req ) {
 };
 module.exports.getAllCards = getAllCards;
 
+/**
+ * Returns a random house code string. Doesn't affect DB.
+ * @return {string} house code
+ */
 function getNewHouseCode() {
 	var strlen = 6;
 	var validChars = [
@@ -131,4 +192,16 @@ function getNewHouseCode() {
 	} while ( getHouse(houseCode) != null );
 	console.log('Generated Random House Code: ' + houseCode);
 	return houseCode;
+};
+
+/**
+ * Returns true if we are within the time period where
+ * re rolls are allowed.
+ * @param  {[type]} req HTTP request
+ * @return {boolean}     
+ */
+function withinRerollPeriod( req ) {
+	var now = Date.now();
+	return true; // TODO: Actually test this later
 }
+module.exports.withinRerollPeriod = withinRerollPeriod;

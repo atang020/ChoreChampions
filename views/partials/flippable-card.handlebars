@@ -24,7 +24,8 @@
           <li>{{this}}</li>
           {{/each}}
         </ul>
-        <p class="text-center"> 
+        <p class="text-center">
+          {{#if myChores}} 
           <form action="/chores/submit" method="POST"> 
           {{!-- TODO: this is a TERRIBLE way to do this, but it's temporary --}}
             <input type="hidden" name="id" value="{{id}}"/>
@@ -34,7 +35,10 @@
    
             <button type="submit" class="btn btn-success complete-chore-btn">Complete Chore!</button>              
           </form>
+          {{#unless withinRerollPeriod }}
           <button class="btn btn-success reroll-chore-btn" data-reroll="{{id}}">Re-Roll <span class="badge">{{ user.rerolls }}</span></button>
+          {{/unless}}
+          {{/if}}
         </p>
       </div>
     </div>

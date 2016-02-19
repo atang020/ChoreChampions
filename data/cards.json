@@ -4,6 +4,7 @@
 			"name": "Clean Stove",
 			"id": "k00",
 			"reward": 50,
+			"bounty": 0,
 			"verifyBonus": 25,
 			"imageURL": "http://www.lpappliances.com/images/Verona/24SIDE.jpg",
 			"requirements": [
@@ -18,6 +19,7 @@
 			"name": "Empty Trash",
 			"id": "k01",
 			"reward": 15,
+			"bounty": 0,
 			"verifyBonus": 5,
 			"imageURL": "http://ecx.images-amazon.com/images/I/71XkA0WKZ0L._SL1500_.jpg",
 			"requirements": [

@@ -17,6 +17,16 @@
       {{/if}}
     </div>
 
+    {{#unless chores}}
+    <form action="/deal" method="POST">
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-info" type="submit">Deal</button>
+        </div>
+      </div>
+    </form>
+    {{/unless}}
+
     <ul class="list-cards col-xs-12">
       {{#each chores }}
       {{> flippable-card }}
