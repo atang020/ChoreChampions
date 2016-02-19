@@ -12,7 +12,6 @@ var USER_COOKIE_ID = 'userid';
 var SUPPRESS_TUTORIAL = 'suppress-tutorial';
 
 var cardData = require('../data/cards.json');
-var choresDB = require('../data/choresDB.json');
 var houses   = require('../common/house-common');
 
 module.exports.isGuest = isGuest;

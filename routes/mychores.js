@@ -6,17 +6,15 @@ exports.viewProject = function(req, res){
   	return res.redirect('/');
   }
   else {
+  	// This is an awful hack to get around the fact that
+  	// handlebars partials won't find a simple boolean...
   	var hand = user.getHand(req);
   	var wrrp = house.withinRerollPeriod(req);
-  	for (var i = 0; i < hand.length; ++i) {
-  		hand[i].withinRerollPeriod = wrrp;
-  		hand[i].myChores = true;
-  	}
 	return res.render('mychores', {
 		'title': 'My Chores',
 		'navbar': user.getNavbarData(),
 		'username': user.getName( req ),
-		'chores': hand,
+		'chores': hand
 	});
   }
 };

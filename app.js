@@ -49,7 +49,7 @@ app.post('/', landing.view);
 
 app.get('/home', homeScreen.view);
 app.get('/mychores', mychores.viewProject);
-app.get('/verifychores', verifychores.viewProject);
+app.get('/verifychores', verifychores.view);
 app.get('/allchores', allchores.viewProject);
 app.get('/settings', settings.viewProject);
 app.get('/store', store.viewProject);

@@ -13,6 +13,7 @@
 				"Wipe it clean!"
 			],
 			"belongsTo": "",
+			"belongsToName": "",
 			"state": "undealt"			
 		},
 		{
@@ -27,6 +28,7 @@
 				"Place a new trash bag in the bin."
 			],
 			"belongsTo": "",
+			"belongsToName": "",
 			"state": "undealt"
 		}
 	]

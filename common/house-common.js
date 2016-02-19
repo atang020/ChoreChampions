@@ -108,6 +108,7 @@ function deal(req) {
 
 				card.status = 'dealt';
 				card.belongsTo = user.userid;
+				card.belongsToName = user.name;
 
 				// Increment user index and wrap around if it's too big
 				userIndex = (userIndex + 1) % house.users.length;
@@ -116,6 +117,44 @@ function deal(req) {
 	}
 }
 module.exports.deal = deal;
+
+/**
+ * Gets a card by it's id.
+ */
+function getCard(req, cardId) {
+	var cardList = getAllCards(req).cards;
+	console.log(cardList);
+	for ( var c = 0; c < cardList.length; ++c ) {
+		if ( cardList[c].id == cardId ) {
+			return cardList[c];
+		}
+	}
+}
+module.exports.getCard = getCard;
+
+function getAllPending(req) {
+	var cardList = getAllCards(req).cards;
+	var retList = [];
+	for ( var c = 0; c < cardList.length; ++c ) {
+		if ( cardList[c].status == 'pending' ) {
+			retList.push(cardList[c]);
+		}
+	}
+	return retList;
+};
+module.exports.getAllPending = getAllPending;
+
+function getAllCompleted(req) {
+	var cardList = getAllCards(req).cards;
+	var retList = [];
+	for ( var c = 0; c < cardList.length; ++c ) {
+		if ( cardList[c].status == 'verified' ) {
+			retList.push(cardList[c]);
+		}
+	}
+	return retList;
+};
+module.exports.getAllCompleted = getAllCompleted;
 
 /**
  * Adds a user to the requested house. Returns an HTTP response.
