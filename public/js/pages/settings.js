@@ -10,7 +10,9 @@ $(document).ready(function() {
  */
 function initializePage() {
   console.log("Javascript connected!");
-  $(".saveChanges").click(function(){
-  	alert("Settings Changed!");
+  $('select').each(function(){
+  	var val = $(this).attr('_default');
+  	$('option[value="' + val + '"]').attr('selected','selected');
+  	console.log(val);
   });
 }

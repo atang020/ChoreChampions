@@ -51,12 +51,13 @@ function create( req ) {
 	// Search to see if the house exists. Creates a new house.
 	var code = req.body.code || req.query.code || '';
 	var beds = req.body.beds || req.query.beds || '';
+	var name = req.body.houseName || req.query.houseName || 'Unamed House';
 	var baths = req.body.baths || req.query.baths || '';
 	var house = getHouse(code);
 	if ( house == null ) {
 		var newHouse = {
 			code: code,
-			name: "Unamed House",
+			name: name,
 			users: [],
 			bathrooms: beds,
 			bedrooms: baths,
@@ -117,6 +118,17 @@ function deal(req) {
 	}
 }
 module.exports.deal = deal;
+
+/**
+ * Returns the list of all the users in this house.
+ */
+function getUsers(req) {
+	var house = getHouseFromReq(req);
+	if ( house != null ) {
+		return house.users;
+	}
+};
+module.exports.getUsers = getUsers;
 
 /**
  * Gets a card by it's id.

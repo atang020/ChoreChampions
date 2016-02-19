@@ -51,11 +51,11 @@ app.get('/home', homeScreen.view);
 app.get('/mychores', mychores.viewProject);
 app.get('/verifychores', verifychores.view);
 app.get('/allchores', allchores.viewProject);
-app.get('/settings', settings.viewProject);
+app.get('/settings', settings.view);
 app.get('/store', store.viewProject);
 
 // Handle POSTS
-app.post('/settings', settings.viewProject); // TODO: Temporary hack around the store
+app.post('/settings', settings.update); // TODO: Temporary hack around the store
 
 // POSTs for verifying chores
 app.post('/chores/submit', verifychores.submitForVerification);
