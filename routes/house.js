@@ -34,3 +34,13 @@ exports.deal = function(req, res) {
 		return res.redirect('/');
 	}
 }
+
+exports.reroll = function(req, res) {
+	if ( user.isLoggedIn(req) ) {
+		houses.reroll(req);
+		res.redirect('/mychores');
+	}
+	else {
+		res.redirect('/');
+	}
+}

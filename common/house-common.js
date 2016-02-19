@@ -76,6 +76,11 @@ function create( req ) {
 	}
 };
 
+function reroll(req) {
+	
+};
+module.exports.reroll = reroll;
+
 /**
  * The dealer takes all the cards out from the verified
  * pile and from all of the users in the house and
@@ -91,6 +96,11 @@ function deal(req) {
 			shuffle(house.cards.cards);
 			var userIndex = 0;
 			var cardList = house.cards.cards;
+			var freeRolls = house.settings.free_rerolls_per_week;
+			// Give users their free re-rolls per week.
+			for ( var u = 0; u < house.users.length; ++u ) {
+				house.users[u].rerolls += freeRolls;
+			}
 			for ( var cardIndex = 0; cardIndex < cardList.length; ++cardIndex ) {
 				
 				var user = house.users[userIndex];
