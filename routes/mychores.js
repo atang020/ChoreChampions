@@ -9,7 +9,7 @@ exports.viewProject = function(req, res){
 	return res.render('mychores', {
 		'title': 'My Chores',
 		'navbar': user.getNavbarData(),
-		'username': req.cookies.username,
+		'username': user.getName( req ),
 		'chores': user.getHand( req )
 	});
   }

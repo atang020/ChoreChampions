@@ -7,12 +7,17 @@
   <body>
   {{> navbar }}
   <div class="container">
+    
+    <div class="jumbotron">
+      <h1>All Cards</h1>
+      <p>
+        These are all the chore cards available in your house.
+      </p>
+    </div>
 
     <div class="row">
       <div class="col-xs-12">
-        <div class="alert alert-info">
-        Hey! To learn more about these cards, visit our <a href="#">tutorial</a>!
-        </div>
+        
         <ul class="list-cards col-xs-12">
           {{#each cards.cards}}
           {{> flippable-card }}

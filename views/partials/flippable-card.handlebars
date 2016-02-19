@@ -32,9 +32,9 @@
             <input type="hidden" name="verifyBonus" value="{{verifyBonus}}"/>   
             <input type="hidden" name="belongsTo" value="{{belongsTo}}"/>   
    
-
-            <button type="submit" class="btn btn-success">Complete Chore!</button>
+            <button type="submit" class="btn btn-success complete-chore-btn">Complete Chore!</button>              
           </form>
+          <button class="btn btn-success reroll-chore-btn" data-reroll="{{id}}">Re-Roll <span class="badge">{{ user.rerolls }}</span></button>
         </p>
       </div>
     </div>

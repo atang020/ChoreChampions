@@ -6,12 +6,14 @@
  * There's a lot of wizard-of-Oz ing going on here.
  */
 
-var HOUSE_COOKIE_NAME = 'house';
-var USER_COOKIE_NAME = 'username';
+var HOUSE_COOKIE_NAME = 'code';
+var USER_COOKIE_NAME = 'name';
+var USER_COOKIE_ID = 'userid';
 var SUPPRESS_TUTORIAL = 'suppress-tutorial';
 
 var cardData = require('../data/cards.json');
 var choresDB = require('../data/choresDB.json');
+var houses   = require('../common/house-common');
 
 module.exports.isGuest = isGuest;
 module.exports.isLoggedIn = isLoggedIn;
@@ -20,7 +22,12 @@ module.exports.getNavbarData = getNavbarData;
 
 function isGuest( req ) {
 	if ( req.cookies === undefined ||
-		 req.cookies.house === undefined ) {
+		 req.cookies[HOUSE_COOKIE_NAME] === undefined ) {
+		return true;
+	}
+	else if ( houses.getHouseFromReq( req ) == null ) {
+		// If we are "logged in" to a house that doesn't
+		// exist, we aren't REALLY logged in.
 		return true;
 	}
 	else {
@@ -35,14 +42,16 @@ function isLoggedIn( req ) {
 function getCookieInfo( req ) {
 	if ( isGuest( req ) ) {
 		return {
-			house: undefined,
-			username: undefined
+			code: undefined,
+			name: undefined,
+			userid: undefined
 		};
 	}
 	else {
 		return {
-			house: req.cookies.house,
-			username: req.cookies.username
+			code: req.cookies.code,
+			name: req.cookies.name,
+			userid: req.cookies.userid
 		};
 	}
 }
@@ -57,14 +66,22 @@ function getNavbarData( req ) {
 	};
 }
 
+module.exports.getName = function( req ) {
+	return req.cookies[USER_COOKIE_NAME];
+}
+
+module.exports.getID = function( req ) {
+	return req.cookies[USER_COOKIE_ID];
+}
+
 module.exports.getHand = function( req ) {
 	// Returns the current user's hand.
 	if ( isGuest(req ) ) {
 		return {};
 	}
 	else {
-		user = req.cookies[USER_COOKIE_NAME];
-		hand = [];
+		var user = req.cookies[USER_COOKIE_NAME];
+		var hand = [];
 		for (var i = 0; i < cardData.cards.length; ++i ) {
 			var card = cardData.cards[i];
 			if ( card.belongsTo == user ) {
@@ -88,4 +105,15 @@ module.exports.getHand = function( req ) {
 		}
 		return hand;
 	}
+}
+
+module.exports.getUser = function( req ) {
+	// Looks up the user in the current house and returns the user's info
+	// this includes things like rerolls, and his/her hand
+	
+	return {
+		'hand': getHand( req ),
+		'rerolls': 9,
+		'gold': 1337
+	};
 }

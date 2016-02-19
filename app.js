@@ -42,9 +42,12 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', landing.view);
+app.get('/join', function(req,res) {
+	return res.redirect('/');
+})
+app.post('/', landing.view);
+
 app.get('/home', homeScreen.view);
-app.get('/create', house.create);
-app.get('/join', house.join);
 app.get('/mychores', mychores.viewProject);
 app.get('/verifychores', verifychores.viewProject);
 app.get('/allchores', allchores.viewProject);
@@ -53,9 +56,15 @@ app.get('/store', store.viewProject);
 
 // Handle POSTS
 app.post('/settings', settings.viewProject); // TODO: Temporary hack around the store
+
+// POSTs for verifying chores
 app.post('/chores/submit', verifychores.submitForVerification);
 app.post('/chores/approve', verifychores.approve);
 app.post('/chores/reject', verifychores.reject);
+
+// POSTs for house creation/management
+app.post('/create', house.create);
+app.post('/join', house.join);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
