@@ -4,14 +4,15 @@
 			"name": "Clean Stove",
 			"id": "k00",
 			"reward": 50,
-			"verifyBonus": 5,
+			"verifyBonus": 25,
 			"imageURL": "http://www.lpappliances.com/images/Verona/24SIDE.jpg",
 			"requirements": [
 				"No oil residue or gunk left on the stovetops.",
 				"No dirty pots/pans.",
 				"Wipe it clean!"
 			],
-			"belongsTo": "Bob"			
+			"belongsTo": "",
+			"state": "undealt"			
 		},
 		{
 			"name": "Empty Trash",
@@ -23,7 +24,8 @@
 				"Empty the trash in the kitchen into the trash cans outside.",
 				"Place a new trash bag in the bin."
 			],
-			"belongsTo": "Sally"
+			"belongsTo": "",
+			"state": "undealt"
 		}
 	]
 }

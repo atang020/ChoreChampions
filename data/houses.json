@@ -2,14 +2,43 @@
 	"houses": [
 		{
 			"code": "a1b2c3d4",
+			"name": "Awesome House #1",
 			"users": [
-				"Annie", "Beth", "Joseph", "Sam"
+				{
+					"name": "Annie",
+					"userid": "0",
+					"gold": 0,
+					"rerolls": 0
+				},
+				{
+					"name": "Seth",
+					"userid": "1",
+					"gold": 0,
+					"rerolls": 0
+				},
+				{
+					"name": "Juan",
+					"userid": "2",
+					"gold": 0,
+					"rerolls": 0
+				},
+				{
+					"name": "Barbara",
+					"userid": "3",
+					"gold": 0,
+					"rerolls": 0
+				}
 			],
 			"bathrooms": 2,
 			"bedrooms": 3,
 			"settings": {
-				"default_rerolls": 2
-			}
+				"free_rerolls_per_week": 1,
+				"deal_day": "Sunday",
+				"deal_time": "8am"
+			},
+			"cards": [
+
+			]
 		}
 	]
 }

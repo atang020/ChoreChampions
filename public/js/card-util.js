@@ -20,5 +20,10 @@ $(document).on('ready', function cardUtilOnReady() {
 	$('.card').on('click', function onCardClicked() {
 		$(this).toggleClass('flipped');
 	});
+	$('.reroll-chore-button').on('click', function onCardRerolled() {
+		var divToDelete = '#' + $(this).attr('data-reroll');
+		$(divToDelete).remove();
+		// TODO: post to the server & wait for response on is-okay-to-reroll
+	});
 
 });

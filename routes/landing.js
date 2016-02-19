@@ -7,7 +7,7 @@
  */
 
 var user = require('../common/user-common');
-var houses = require('../data/houses.json')
+var houses = require('../common/house-common')
 
 exports.view = function(req, res) {
 	if ( user.isLoggedIn( req ) ) {
@@ -18,6 +18,7 @@ exports.view = function(req, res) {
 	// console.log(req.cookies);
 	return res.render('landing', {
 		'title': 'Chore Champions',
-		'navbar': user.getNavbarData()
+		'navbar': user.getNavbarData(),
+		'randomHouseCode': houses.getNewHouseCode()
 	});
 };

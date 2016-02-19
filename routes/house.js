@@ -4,20 +4,23 @@
  */
 
 // TODO: Schema for this data is still TBD
-var houses = require('../data/houses.json');
+var houses = require('../common/house-common');
+var user   = require('../common/user-common');
 
 exports.create = function(req, res) {
-	var house = req.query.houseCode || '';
-	var username = req.query.username || '';
-	res.cookie('house', house );
-	res.cookie('username', username );
+	if ( user.isGuest( req ) ) {
+		houses.create(req);
+		res = houses.addUserToHouse(req, res);
+	}
 	return res.redirect('/mychores');
 };
 
 exports.join = function(req, res) {
-	var house = req.query.houseCode || '';
-	var username = req.query.username || '';
-	res.cookie('house', house );
-	res.cookie('username', username );
-	return res.redirect('/mychores');
+	// Use req.query for GET requests, req.body for POST requests
+	if ( user.isGuest( req ) ) {
+		return houses.addUserToHouse(req, res);
+	}
+	else {
+		return res.redirect('/mychores');
+	}
 };

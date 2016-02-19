@@ -12,6 +12,10 @@ body {
 	perspective: 800px; /* not sure if I need this...*/
 }
 
+/* Javascript-only classes. Included here for reference */
+.complete-chore-btn {}
+.reroll-chore-btn {}
+
 /*
  * For explanation on what's going on, check this out:
  * https://desandro.github.io/3dtransforms/docs/card-flip.html

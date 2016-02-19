@@ -1,4 +1,4 @@
-var card_data = require('../data/cards.json');
+var house = require('../common/house-common');
 var user = require('../common/user-common');
 
 exports.viewProject = function(req, res) {
@@ -8,6 +8,6 @@ exports.viewProject = function(req, res) {
   res.render('allchores', {
   	title: 'All Chores',
   	navbar: user.getNavbarData(),
-  	cards: card_data
+  	cards: house.getAllCards( req )
   });
 };

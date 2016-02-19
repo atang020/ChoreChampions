@@ -65,8 +65,6 @@ exports.reject = function(req, res) {
   // console.log(obj);
   for (var i = 0; i < choresDB.pending.length; ++i ) {
     var temp = choresDB.pending[i];
-    // console.log('temp:');
-    // console.log(temp);
     if ( obj.id == temp.id ) {
       choresDB.pending = choresDB.pending.splice(i, 1); // delete this from the reject list
       console.log(choresDB.pending.splice(i, 1))
