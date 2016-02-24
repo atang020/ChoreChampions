@@ -30,6 +30,157 @@
 			"belongsTo": "",
 			"belongsToName": "",
 			"state": "undealt"
+		},
+		{
+			"name": "Vacuum Commons",
+			"id": "c00",
+			"reward": 50,
+			"bounty": 0,
+			"verifyBonus": 5,
+			"imageURL": "http://www.dyson.com/medialibrary/Group/Carousels/SlideBackground/Vacuums/Cordless/V6%20Cordless/V6%20Absolute%20USA/V6_Absolute_Intro.ashx",
+			"requirements": [
+				"Vacuum the entire common area.",
+				"Nothing on the floor that shouldn't be there."
+			],
+			"belongsTo": "",
+			"belongsToName": "",
+			"state": "undealt"
+		},
+		{
+			"name": "Mop Kitchen",
+			"id": "k02",
+			"reward": 50,
+			"bounty": 0,
+			"verifyBonus": 5,
+			"imageURL": "http://f.tqn.com/y/housekeeping/1/W/F/8/mopping-more-resized.jpg",
+			"requirements": [
+				"Mop the kitchen floor.",
+				"Should not be sticky.",
+				"Nothing on the floor that shouldn't be there."
+			],
+			"belongsTo": "",
+			"belongsToName": "",
+			"state": "undealt"
+		},
+		{
+			"name": "Pay Rent",
+			"id": "u00",
+			"reward": 100,
+			"bounty": 0,
+			"verifyBonus": 10,
+			"imageURL": "https://www.penfed.org/uploadedImages/Content/_images/Masthead/Masthead-415x191-bills-paid.jpg",
+			"requirements": [
+				"Make sure everyone has put in their share.",
+				"Pay the rent."
+			],
+			"belongsTo": "",
+			"belongsToName": "",
+			"state": "undealt"
+		},
+		{
+			"name": "Pay Utilities",
+			"id": "u01",
+			"reward": 100,
+			"bounty": 0,
+			"verifyBonus": 10,
+			"imageURL": "https://pa211sw.communityos.org/cms6/files/os163/p390/dreamstime_m_11408223[1].jpg",
+			"requirements": [
+				"Make sure everyone has put in their share.",
+				"Pay the utilities bill."
+			],
+			"belongsTo": "",
+			"belongsToName": "",
+			"state": "undealt"
+		},
+		{
+			"name": "Clean Toilet",
+			"id": "b00",
+			"reward": 50,
+			"bounty": 0,
+			"verifyBonus": 5,
+			"imageURL": "http://www.signaturehardware.com/media/catalog/product/cache/1/image/1500x/9df78eab33525d08d6e5fb8d27136e95/2/5/256344-dual-flush-corner-toilet-white.jpg",
+			"requirements": [
+				"Bowl is spotless.",
+				"Seat is spotless."
+			],
+			"belongsTo": "",
+			"belongsToName": "",
+			"state": "undealt"
+		},
+		{
+			"name": "Clean Sink",
+			"id": "k03",
+			"reward": 50,
+			"bounty": 0,
+			"verifyBonus": 5,
+			"imageURL": "http://ak1.ostkcdn.com/img/mxc/090817_kitchen-sink.jpg",
+			"requirements": [
+				"Sink is spotless.",
+				"No food scraps left in the sink."
+			],
+			"belongsTo": "",
+			"belongsToName": "",
+			"state": "undealt"
+		},
+		{
+			"name": "Clean Shower",
+			"id": "b01",
+			"reward": 100,
+			"bounty": 0,
+			"verifyBonus": 10,
+			"imageURL": "http://cdn12.grohe.com/~mi/483/953/rainshower-system-shower-system-for-wall-mounting.jpg",
+			"requirements": [
+				"Tub is spotless",
+				"Shower head is spotless.",
+				"Walls are spotless."
+			],
+			"belongsTo": "",
+			"belongsToName": "",
+			"state": "undealt"
+		},
+		{
+			"name": "Clean Oven",
+			"id": "k04",
+			"reward": 100,
+			"bounty": 0,
+			"verifyBonus": 5,
+			"imageURL": "http://products.geappliances.com/MarketingObjectRetrieval/Dispatcher?RequestType=Image&Name=0107108.jpg",
+			"requirements": [
+				"Inside of the oven should have no food waste or burned residue.",
+				"The front of the oven is spotless."
+			],
+			"belongsTo": "",
+			"belongsToName": "",
+			"state": "undealt"
+		},
+		{
+			"name": "Clean BR Sink",
+			"id": "b02",
+			"reward": 50,
+			"bounty": 0,
+			"verifyBonus": 5,
+			"imageURL": "http://st.hzcdn.com/simgs/89a142430d44ead4_4-0924/traditional-bathroom-sinks.jpg",
+			"requirements": [
+				"Bathroom sink is spotless.",
+				"Countertops should be wiped."
+			],
+			"belongsTo": "",
+			"belongsToName": "",
+			"state": "undealt"
+		},
+		{
+			"name": "Clean Mirror",
+			"id": "b03",
+			"reward": 50,
+			"bounty": 0,
+			"verifyBonus": 5,
+			"imageURL": "http://abathroommirrors.com/wp-content/uploads/2014/10/Bathroom-Mirror-Frames6.jpg",
+			"requirements": [
+				"Mirror(s) in the bathroom are spotless."
+			],
+			"belongsTo": "",
+			"belongsToName": "",
+			"state": "undealt"
 		}
 	]
 }
