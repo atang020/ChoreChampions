@@ -6,7 +6,7 @@ exports.viewProject = function(req, res){
   }
   res.render('store', {
     'title': 'Store',
-    'navbar': user.getNavbarData(),
+    'navbar': user.getNavbarData(req),
     'inventory': [
       {
         'name': 'Re-Roll',

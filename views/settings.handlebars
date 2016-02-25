@@ -50,14 +50,18 @@
         <label for="">House Name</label>
         <input type="text" class="form-control" name="name" value="{{ name }}" />
       </div>
-      {{#if users }}
       <label for="">Roomates</label>
       <ul class="list-group">
+      {{#if users }}
+      
       {{#each users }}
         <li class="list-group-item">{{ name }}</li>
       {{/each}}
-      </ul>
+      
+      {{else}}
+      <div class="list-group-item alert alert-danger">It seems you have no roomates right now. If you aren't <a href="https://twitter.com/hashtag/foreveralone">#foreveralone</a> you might want to invite some of your buddies over. Give them this code: <strong>{{ code }}</strong>.</div>
       {{/if}}
+      </ul>
       <div class="form-group">
         <button class="btn btn-success form-control saveChanges">Save Changes</button>        
       </div>

@@ -18,7 +18,6 @@ exports.view = function(req, res) {
 	// console.log(req.cookies);
 	return res.render('landing', {
 		'title': 'Chore Champions',
-		'navbar': user.getNavbarData(),
 		'randomHouseCode': houses.getNewHouseCode()
 	});
 };

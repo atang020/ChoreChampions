@@ -12,7 +12,7 @@ exports.viewProject = function(req, res){
   	var wrrp = house.withinRerollPeriod(req);
 	return res.render('mychores', {
 		'title': 'My Chores',
-		'navbar': user.getNavbarData(),
+		'navbar': user.getNavbarData( req ),
 		'username': user.getName( req ),
 		'chores': hand
 	});
