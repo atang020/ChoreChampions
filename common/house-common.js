@@ -54,10 +54,12 @@ function create( req ) {
 	var name = req.body.houseName || req.query.houseName || 'Unamed House';
 	var baths = req.body.baths || req.query.baths || '';
 	var house = getHouse(code);
-	if ( house == null ) {
+	if ( house === null ) {
 		var newHouse = {
 			code: code,
 			name: name,
+			last_deal: new Date(Date.now()),
+			next_deal: null,
 			users: [],
 			bathrooms: beds,
 			bedrooms: baths,
@@ -68,17 +70,22 @@ function create( req ) {
 			},
 			cards: cardData
 		};
+		updateNextDealDate(newHouse);
 		houseDB.houses.push(newHouse);
 	}
 	else {
 		// If the house already exists, just add this user to that house.
-		throw "This house already exists!"
+		throw "This house already exists!";
 	}
-};
+}
 
+// TODO: Re-rolling!
 function reroll(req) {
-	
-};
+	var house = getHouseFromReq(req);
+	if ( house !== null ) {
+		// Update the time at which
+	}
+}
 module.exports.reroll = reroll;
 
 /**
@@ -90,7 +97,7 @@ module.exports.reroll = reroll;
  */
 function deal(req) {
 	var house = getHouseFromReq(req);
-	if ( house != null ) {
+	if ( house !== null ) {
 		if ( house.users.length > 0 ) {
 			// Fisher-Yates shuffle, thanks to internet
 			shuffle(house.cards.cards);
@@ -124,6 +131,12 @@ function deal(req) {
 				// Increment user index and wrap around if it's too big
 				userIndex = (userIndex + 1) % house.users.length;
 			}
+			// Calculate the time for the next deal
+			var now = Date.now();
+			house.last_deal = new Date(now);
+
+			// Round off the time, update the next
+			updateNextDealDate(house);
 		}
 	}
 }
@@ -134,11 +147,30 @@ module.exports.deal = deal;
  */
 function getUsers(req) {
 	var house = getHouseFromReq(req);
-	if ( house != null ) {
+	if ( house !== null ) {
 		return house.users;
 	}
-};
+}
 module.exports.getUsers = getUsers;
+
+/**
+ * Returns the user object specified by 'id'. If id is not
+ * specified, it will return the user who is making this HTTP request.
+ */
+function getUser(req, id) {
+	var userid = id || req.cookies.userid;
+	var house = getHouseFromReq(req);
+	if ( house !== null ) {
+		var users = house.users;
+		for ( var i = 0; i < users.length; ++i ) {
+			if ( users[i].userid == userid ) {
+				return users[i];
+			}  
+		}
+	}
+	return null;
+}
+module.exports.getUser = getUser;
 
 /**
  * Gets a card by it's id.
@@ -163,7 +195,7 @@ function getAllPending(req) {
 		}
 	}
 	return retList;
-};
+}
 module.exports.getAllPending = getAllPending;
 
 function getAllCompleted(req) {
@@ -175,7 +207,7 @@ function getAllCompleted(req) {
 		}
 	}
 	return retList;
-};
+}
 module.exports.getAllCompleted = getAllCompleted;
 
 /**
@@ -206,7 +238,8 @@ function addUserToHouse(req, res) {
 	catch (e) {
 		console.log("ERROR! HOUSE CODE DOESN'T EXIST!");
 		return res.render('landing', {
-			'error': "A house with the given code does not exist."
+			'error': "A house with the given code does not exist.",
+			'randomHouseCode': getNewHouseCode()
 		});
 	}
 
@@ -224,10 +257,10 @@ function addUserToHouse(req, res) {
  */
 function getAllCards( req ) {
 	var house = getHouseFromReq( req );
-	if ( house != null ) {
+	if ( house !== null ) {
 		return house.cards;
 	}
-};
+}
 module.exports.getAllCards = getAllCards;
 
 /**
@@ -250,10 +283,212 @@ function getNewHouseCode() {
 			var letter = Math.floor(Math.random() * validChars.length) % (validChars.length);
 			houseCode += validChars[letter];
 		}
-	} while ( getHouse(houseCode) != null );
+	} while ( getHouse(houseCode) !== null );
 	console.log('Generated Random House Code: ' + houseCode);
 	return houseCode;
-};
+}
+
+/**
+ * Updates the Date object for the 'next_deal' property of the given house.
+ * Uses the 'deal_day' and 'deal_time' fields from 'settings'.
+ * @param  {object} houseObj one of the elements in the 'houses' list
+ * @return {void}          
+ */
+function updateNextDealDate(houseObj) {
+
+	// Clear minutes/seconds/ms fields in the date
+	houseObj.last_deal.setUTCMinutes(0);
+	houseObj.last_deal.setUTCSeconds(0);
+	houseObj.last_deal.setUTCMilliseconds(0);
+
+	var lastDeal = houseObj.last_deal;
+	var lastDealDay = lastDeal.getDay();
+	var lastDealTime = lastDeal.getHours();
+	var dayOffset = 0;
+	/*
+	 * Thank you based MDN.
+	 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime	
+	 */
+	switch (houseObj.settings.deal_day) {
+		case 'Monday': {
+			if ( lastDealDay == 1 ) {
+				dayOffset = 7;
+			}
+			else if ( lastDealDay == 2 ) {
+				dayOffset = 6;
+			}
+			else if ( lastDealDay == 3 ) {
+				dayOffset = 5;
+			}
+			else if ( lastDealDay == 4 ) {
+				dayOffset = 4;
+			}
+			else if ( lastDealDay == 5 ) {
+				dayOffset = 3;
+			}
+			else if ( lastDealDay == 6 ) {
+				dayOffset = 2;
+			}
+			else {
+				dayOffset = 1;
+			}
+		}
+		break;
+		case 'Tuesday': {
+			if ( lastDealDay == 1 ) {
+				dayOffset = 1;
+			}
+			else if ( lastDealDay == 2 ) {
+				dayOffset = 7;
+			}
+			else if ( lastDealDay == 3 ) {
+				dayOffset = 6;
+			}
+			else if ( lastDealDay == 4 ) {
+				dayOffset = 5;
+			}
+			else if ( lastDealDay == 5 ) {
+				dayOffset = 4;
+			}
+			else if ( lastDealDay == 6 ) {
+				dayOffset = 3;
+			}
+			else {
+				dayOffset = 2;
+			}
+		}
+		break;
+		case 'Wednesday': {
+			if ( lastDealDay == 1 ) {
+				dayOffset = 2;
+			}
+			else if ( lastDealDay == 2 ) {
+				dayOffset = 1;
+			}
+			else if ( lastDealDay == 3 ) {
+				dayOffset = 7;
+			}
+			else if ( lastDealDay == 4 ) {
+				dayOffset = 6;
+			}
+			else if ( lastDealDay == 5 ) {
+				dayOffset = 5;
+			}
+			else if ( lastDealDay == 6 ) {
+				dayOffset = 4;
+			}
+			else {
+				dayOffset = 3;
+			}
+		}
+		break;
+		case 'Thursday': {
+			if ( lastDealDay == 1 ) {
+				dayOffset = 3;
+			}
+			else if ( lastDealDay == 2 ) {
+				dayOffset = 2;
+			}
+			else if ( lastDealDay == 3 ) {
+				dayOffset = 1;
+			}
+			else if ( lastDealDay == 4 ) {
+				dayOffset = 7;
+			}
+			else if ( lastDealDay == 5 ) {
+				dayOffset = 6;
+			}
+			else if ( lastDealDay == 6 ) {
+				dayOffset = 5;
+			}
+			else {
+				dayOffset = 4;
+			}
+		}
+		break;
+		case 'Friday': {
+			if ( lastDealDay == 1 ) {
+				dayOffset = 4;
+			}
+			else if ( lastDealDay == 2 ) {
+				dayOffset = 3;
+			}
+			else if ( lastDealDay == 3 ) {
+				dayOffset = 2;
+			}
+			else if ( lastDealDay == 4 ) {
+				dayOffset = 1;
+			}
+			else if ( lastDealDay == 5 ) {
+				dayOffset = 7;
+			}
+			else if ( lastDealDay == 6 ) {
+				dayOffset = 6;
+			}
+			else {
+				dayOffset = 5;
+			}
+		}
+		break;
+		case 'Saturday': {
+			if ( lastDealDay == 1 ) {
+				dayOffset = 5;
+			}
+			else if ( lastDealDay == 2 ) {
+				dayOffset = 4;
+			}
+			else if ( lastDealDay == 3 ) {
+				dayOffset = 3;
+			}
+			else if ( lastDealDay == 4 ) {
+				dayOffset = 2;
+			}
+			else if ( lastDealDay == 5 ) {
+				dayOffset = 1;
+			}
+			else if ( lastDealDay == 6 ) {
+				dayOffset = 7;
+			}
+			else {
+				dayOffset = 6;
+			}
+		}
+		break;
+		case 'Sunday': {
+			if ( lastDealDay == 1 ) {
+				dayOffset = 6;
+			}
+			else if ( lastDealDay == 2 ) {
+				dayOffset = 5;
+			}
+			else if ( lastDealDay == 3 ) {
+				dayOffset = 4;
+			}
+			else if ( lastDealDay == 4 ) {
+				dayOffset = 3;
+			}
+			else if ( lastDealDay == 5 ) {
+				dayOffset = 2;
+			}
+			else if ( lastDealDay == 6 ) {
+				dayOffset = 1;
+			}
+			else {
+				dayOffset = 7;
+			}
+		}
+		break;
+	}
+
+	// We need to add 'dayOffset' to lastDeal's time, plus the hour offset
+	//   hours_to_add = hours_at_new - hours_at_old
+  	var hoursAtNew = parseInt(houseObj.settings.deal_time.split('am')[0]);
+	hourOffset = hoursAtNew - lastDeal.getHours();
+
+	// Remember, .getTime() returns in milliseconds
+	houseObj.next_deal = new Date( lastDeal.getTime() + (dayOffset * 24 + hourOffset) * 60 * 60 * 1000 );
+}
+module.exports.updateNextDealDate = updateNextDealDate;
 
 /**
  * Returns true if we are within the time period where
