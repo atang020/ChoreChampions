@@ -28,6 +28,13 @@ exports.update = function(req, res) {
     return res.redirect('/');
   }
   var myHouse = house.getHouseFromReq( req );
+  var users = [];
+  for (var i = 0; i < myHouse.users.length; ++i) {
+    if ( i != req.cookies.userid ) {
+      users.push( myHouse.users[i] )
+    }
+  }
+
   myHouse.name = req.body.name;
   myHouse.settings.deal_day = req.body.deal_day;
   myHouse.settings.deal_time = req.body.deal_time;
@@ -40,7 +47,7 @@ exports.update = function(req, res) {
     'code': myHouse.code,
     'deal_day': myHouse.settings.deal_day,
     'deal_time': myHouse.settings.deal_time,
-    'users': myHouse.users,
+    'users': users,
     'alert': 'Settings saved!'
   })
 };

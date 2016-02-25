@@ -4,6 +4,7 @@
 <head>
 	<title>Chore Champs - Home</title>	
     {{> styles }}
+    <link rel="stylesheet" type="text/css" href="css/fluid.css">
 </head>
 
 <body>
@@ -12,7 +13,7 @@
 			<span class="navbar-brand">Chore Champions</span>
 		</div>
 	</nav>
-	<div class="container">
+	<div class="container-fluid">
 		{{#if error}}
 		<div class="row">
 			<div class="alert alert-danger">{{ error }}</div>
@@ -21,75 +22,90 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="jumbotron">
-					<p>
+          <h3 class="jumbotron-title">Chore Champions</h3>
+					<p class="jumbotron-text">
 					<small>
-					Chore Champions is a competitive trading card game about keeping your home clean. To get started, create a house or join a preexisting one.<br>If you'd like to learn more, click <a href="#" data-toggle="modal" data-target=
-					"#tutModal">here</a>.{{!-- If you would like to set up the game for your house, please click on "Create A House". If 
+					Chore Champions is a competitive trading card game about keeping your home clean. {{!-- To get started, create a house or join a preexisting one. --}}{{!-- <br>If you'd like to learn more, click <a href="#" data-toggle="modal" data-target=
+					"#tutModal">here</a>. --}}{{!-- If you would like to set up the game for your house, please click on "Create A House". If 
 					someone else has already set up the game for you, click "Join"! --}}
 					</small>
 					</p>
 				</div>
-				<div class="row">
-					<div class="col-xs-6">
-						<p class="text-center">
-							<a class="btn btn-success btn-lg" id="create-btn"href="#create-form" role="button">Create</a>							
-						</p>
-					</div>
-					<div class="col-xs-6">
-						<p class="text-center">
-							<a class="btn btn-primary btn-lg" id="join-btn"href="#join-form" role="button">Join</a>
-						</p>
-					</div>
-				</div>
-			
-				<div class="hidden" id="create-form">
-					<form action="/create" method="POST">
-						<div class="form-group">
-							<label for="">House Code</label>
-							<input type="text" name="code" class="form-control" value="{{ randomHouseCode }}" readonly="true" />
-						</div>
-						<div class="form-group">
-							<label for="">House Name</label>
-							<input class="form-control" type="text" name="houseName" placeholder="e.g. 'Awesome Abode'"/>
-						</div>
-						<div class="form-group">
-							<label for="">Username</label>
-							<input type="text" name="name" class="form-control" value="" required/>
-						</div>
-						<div class="form-group">
-							<label for="">Bedrooms</label>
-							<select name="beds" id="" class="form-control">
-								<option value="1" class="form-control">1 bedroom</option>
-								<option value="2" class="form-control">2 bedrooms</option>
-								<option value="3" class="form-control">3 bedrooms</option>
-								<option value="4+" class="form-control">4+ bedrooms</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="">Bathrooms</label>
-							<select name="baths" id="" class="form-control">
-								<option value="1" class="form-control">1 bathroom</option>
-								<option value="2" class="form-control">2 bathrooms</option>
-								<option value="3" class="form-control">3 bathrooms</option>
-								<option value="4+" class="form-control">4+ bathrooms</option>
-							</select>
-						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
-					</form>
-				</div>
-				<div class="hidden" id="join-form">
-					<form action="/join" method="POST">
-						<div class="form-group">
-							<label for="">House Code</label>
-							<input type="text" name="code" class="form-control" value="" placeholder="Enter Code Here!" required/>
-						</div>
-						<div class="form-group">
-							<label for="">Username</label>
-							<input type="text" name="name" class="form-control" value="" required/>
-						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
-					</form>
-				</div>
+  
+        <div class="container">
+          <div class="collapse" id="buttonContainer">
+    				<div class="row">
+    					<div class="col-xs-12">
+    						<a class="center-block btn btn-success btn-lg" id="create-btn" data-toggle="collapse" href="#create-form" role="button"><span class="glyphicon glyphicon-home"></span> Create</a>							
+    					</div>
+            </div>
+            <br>
+            <div class="row">
+    					<div class="col-xs-12">
+    						<a class="center-block btn btn-primary btn-lg" id="join-btn" data-toggle="collapse" href="#join-form" role="button"><span class="glyphicon glyphicon-user"></span> Join</a>
+    					</div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-12">
+                <a href="#" data-toggle="modal" data-target="#tutModal" class="center-block btn btn-info btn-lg"><span class="glyphicon glyphicon-info-sign"></span> Info</a>
+              </div>
+    				</div>
+            <br>
+          </div>
+  				<div class="collapse" id="create-form">
+  					<form action="/create" method="POST">
+  						<div class="form-group">
+  							<label for="">House Code</label>
+  							<input type="text" name="code" class="form-control" value="{{ randomHouseCode }}" readonly="true" />
+  						</div>
+  						<div class="form-group">
+  							<label for="">House Name</label>
+  							<input class="form-control" type="text" name="houseName" placeholder="e.g. Awesome Abode"/>
+  						</div>
+  						<div class="form-group">
+  							<label for="">Username</label>
+  							<input type="text" name="name" class="form-control" value="" placeholder="e.g. Julius Caesar" required/>
+  						</div>
+  						<div class="form-group">
+  							<label for="">Bedrooms</label>
+  							<select name="beds" id="" class="form-control">
+  								<option value="1" class="form-control">1 bedroom</option>
+  								<option value="2" class="form-control">2 bedrooms</option>
+  								<option value="3" class="form-control">3 bedrooms</option>
+  								<option value="4+" class="form-control">4+ bedrooms</option>
+  							</select>
+  						</div>
+  						<div class="form-group">
+  							<label for="">Bathrooms</label>
+  							<select name="baths" id="" class="form-control">
+  								<option value="1" class="form-control">1 bathroom</option>
+  								<option value="2" class="form-control">2 bathrooms</option>
+  								<option value="3" class="form-control">3 bathrooms</option>
+  								<option value="4+" class="form-control">4+ bathrooms</option>
+  							</select>
+  						</div>
+  						<button type="submit" class="btn-right-padded btn btn-primary">Submit</button>
+              <a href="#" data-toggle="modal" data-target="#tutModal" class="btn-right-padded btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Info</a>
+              <a data-toggle="collapse" href="#create-form" class="btn-right-padded btn btn-default">Cancel</a>
+  					</form>
+  				</div>
+  				<div class="collapse" id="join-form">
+  					<form action="/join" method="POST">
+  						<div class="form-group">
+  							<label for="">House Code</label>
+  							<input type="text" name="code" class="form-control" value="" placeholder="Enter Code Here!" required/>
+  						</div>
+  						<div class="form-group">
+  							<label for="">Username</label>
+  							<input type="text" name="name" class="form-control" value="" placeholder="e.g. Cleopatra" required/>
+  						</div>
+  						<button type="submit" class="btn-right-padded btn btn-primary">Submit</button>
+              <a href="#" data-toggle="modal" data-target="#tutModal" class="btn-right-padded btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Info</a>
+              <a data-toggle="collapse" href="#join-form" class="btn-right-padded btn btn-default">Cancel</a>
+  					</form>
+  				</div>
+        </div>
 			</div>
 		</div>
 		{{> footer }}

@@ -10,25 +10,21 @@
 					"name": "Annie",
 					"userid": "0",
 					"gold": 0,
-					"rerolls": 0
+					"rerolls": 0,
+					"weekoff": false,
+					"chores_completed": 0,
+					"chores_approved": 0,
+					"chores_rejected": 0
 				},
 				{
 					"name": "Seth",
 					"userid": "1",
 					"gold": 0,
-					"rerolls": 0
-				},
-				{
-					"name": "Juan",
-					"userid": "2",
-					"gold": 0,
-					"rerolls": 0
-				},
-				{
-					"name": "Barbara",
-					"userid": "3",
-					"gold": 0,
-					"rerolls": 0
+					"rerolls": 0,
+					"weekoff": false,
+					"chores_completed": 0,
+					"chores_approved": 0,
+					"chores_rejected": 0
 				}
 			],
 			"bathrooms": 2,
@@ -36,7 +32,7 @@
 			"settings": {
 				"free_rerolls_per_week": 1,
 				"deal_day": "Sunday",
-				"deal_time": "8am"
+				"deal_time": "8 am"
 			},
 			"cards": [
 

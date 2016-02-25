@@ -482,7 +482,7 @@ function updateNextDealDate(houseObj) {
 
 	// We need to add 'dayOffset' to lastDeal's time, plus the hour offset
 	//   hours_to_add = hours_at_new - hours_at_old
-  	var hoursAtNew = parseInt(houseObj.settings.deal_time.split('am')[0]);
+  	var hoursAtNew = parseInt(houseObj.settings.deal_time.split(' ')[0]);
 	hourOffset = hoursAtNew - lastDeal.getHours();
 
 	// Remember, .getTime() returns in milliseconds

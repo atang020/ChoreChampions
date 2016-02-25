@@ -8,6 +8,9 @@
 	<!-- this is a comment in HTML -->
   {{> navbar }}
 	<div class="container">
+    {{#if goldAwardMsg}}
+    div.<alert class="alert-sucess">{{ goldAwardMsg }}</alert>
+    {{/if}}
     <div class="jumbotron">
       <h1>Verify Chores</h1>
       <p class="text-center">

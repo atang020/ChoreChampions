@@ -3,25 +3,34 @@
  * a house.
  */
 
-$(document).on('ready', function() {
+(function(){
+	$(document).on('ready', function() {
 
-	// TODO: This is really hardcoded and there's a better way
-	$('#create-btn').click(function() {
-		$('#create-form').toggleClass('hidden');
-		$('#create-form').toggleClass('show');
-		if ( $('#join-form').hasClass('show') ) {
-			$('#join-form').removeClass('show');
-			$('#join-form').addClass('hidden');
-		}
-	});
-	$('#join-btn').click(function() {
-		$('#join-form').toggleClass('hidden');
-		$('#join-form').toggleClass('show');
-		if ( $('#create-form').hasClass('show') ) {
-			$('#create-form').removeClass('show');
-			$('#create-form').addClass('hidden');
-		}
-	});
+		// Enable collapse plugin
+		$('#buttonContainer').collapse({
+			toggle: true
+		})
+		$('#create-form').collapse({
+			toggle: false
+		});
+		$('#join-form').collapse({
+			toggle: false
+		});
 
+		// If the join/create forms are opened, hide the button container
+		$('#create-form').on('show.bs.collapse', function(){
+			$('#buttonContainer').collapse('hide');
+		});
+		$('#join-form').on('show.bs.collapse', function(){
+			$('#buttonContainer').collapse('hide');
+		});
+		// ... but if they are hidden, we must show the button container
+		$('#create-form').on('hide.bs.collapse', function(){
+			$('#buttonContainer').collapse('show');
+		});
+		$('#join-form').on('hide.bs.collapse', function(){
+			$('#buttonContainer').collapse('show');
+		});
 
-});
+	})
+})();

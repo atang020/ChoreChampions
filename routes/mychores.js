@@ -10,11 +10,12 @@ exports.viewProject = function(req, res){
   	// handlebars partials won't find a simple boolean...
   	var hand = user.getHand(req);
   	var wrrp = house.withinRerollPeriod(req);
-	return res.render('mychores', {
-		'title': 'My Chores',
-		'navbar': user.getNavbarData( req ),
-		'username': user.getName( req ),
-		'chores': hand
-	});
+    
+  	return res.render('mychores', {
+  		'title': 'My Chores',
+  		'navbar': user.getNavbarData( req ),
+  		'username': user.getName( req ),
+  		'chores': hand
+  	});
   }
 };

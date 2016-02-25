@@ -1,0 +1,12 @@
+/**
+ * By default the body will have a padding top of 70px.
+ * We don't want this on the container-fluid top level DIVs
+ * for /mychores or /allchores (maybe others.)
+ *
+ * So just include this file if you want the first element to
+ * butt up againt the navbar immediately.
+ */
+
+body {
+	padding-top: 50px;
+}

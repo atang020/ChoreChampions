@@ -113,14 +113,3 @@ module.exports.getHand = function( req ) {
 		return hand;
 	}
 }
-
-module.exports.getUser = function( req ) {
-	// Looks up the user in the current house and returns the user's info
-	// this includes things like rerolls, and his/her hand
-	
-	return {
-		'hand': getHand( req ),
-		'rerolls': 9,
-		'gold': 1337
-	};
-}
