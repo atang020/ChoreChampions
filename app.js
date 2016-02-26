@@ -42,10 +42,10 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', landing.view);
+app.get('/A', landing.viewA);
 app.get('/join', function(req,res) {
 	return res.redirect('/');
 })
-app.post('/', landing.view);
 
 app.get('/home', homeScreen.view);
 app.get('/mychores', mychores.viewProject);

@@ -21,3 +21,16 @@ exports.view = function(req, res) {
 		'randomHouseCode': houses.getNewHouseCode()
 	});
 };
+
+exports.viewA = function(req, res) {
+	if ( user.isLoggedIn( req ) ) {
+		// If we're logged in (e.g. the cookie exists)
+		// then redirect to the home page.
+		return res.redirect('/mychores');
+	}
+	// console.log(req.cookies);
+	return res.render('landing-A', {
+		'title': 'Chore Champions',
+		'randomHouseCode': houses.getNewHouseCode()
+	});
+};
