@@ -30,12 +30,6 @@ function isGuest( req ) {
 		return true;
 	}
 	else {
-		var user = houses.getUser(req, req.cookies[USER_COOKIE_ID]);
-		if ( user === null ) {
-			// If we have a userid that doesn't exist in the house,
-			// then we aren't truly 'logged' in either.
-			return true;
-		}
 		return false;
 	}
 }
@@ -65,22 +59,10 @@ function getNavbarData( req ) {
 	// This will eventually figure out which user is logged in,
 	// by inspecting the cookies/session. For now, it's just
 	// an easy way to pass dummy data into the navbar renderer.
-	var user = houses.getUser(req);
-	var nextDealStr = '';
-	if (user != null) {
-		var house = houses.getHouseFromReq(req);
-		nextDealStr = house.next_deal.toDateString() + ' ' + house.next_deal.toLocaleTimeString();
-		return {
-			gold: user.gold,
-			nextDeal: nextDealStr
-		};
-	}
-	else {
-		return {
-			gold: 0,
-			nextDeal: ''
-		}
-	}
+	return {
+		gold: 1337,
+		nextDeal: 'Fri Feb 31st, 4:20 PM'
+	};
 }
 
 module.exports.getName = function( req ) {

@@ -3,8 +3,6 @@
 		{
 			"code": "a1b2c3d4",
 			"name": "Awesome House #1",
-			"last_deal": null,
-			"next_deal": null,
 			"users": [
 				{
 					"name": "Annie",

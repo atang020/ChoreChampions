@@ -10,6 +10,7 @@ exports.viewProject = function(req, res){
   	// handlebars partials won't find a simple boolean...
   	var hand = user.getHand(req);
   	var wrrp = house.withinRerollPeriod(req);
+<<<<<<< HEAD
     
   	return res.render('mychores', {
   		'title': 'My Chores',
@@ -17,5 +18,13 @@ exports.viewProject = function(req, res){
   		'username': user.getName( req ),
   		'chores': hand
   	});
+=======
+	return res.render('mychores', {
+		'title': 'My Chores',
+		'navbar': user.getNavbarData(),
+		'username': user.getName( req ),
+		'chores': hand
+	});
+>>>>>>> parent of c595adb... Fixing some issues with house.next_deal and house.last_deal
   }
 };

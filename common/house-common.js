@@ -54,12 +54,10 @@ function create( req ) {
 	var name = req.body.houseName || req.query.houseName || 'Unamed House';
 	var baths = req.body.baths || req.query.baths || '';
 	var house = getHouse(code);
-	if ( house === null ) {
+	if ( house == null ) {
 		var newHouse = {
 			code: code,
 			name: name,
-			last_deal: new Date(Date.now()),
-			next_deal: null,
 			users: [],
 			bathrooms: beds,
 			bedrooms: baths,
@@ -70,22 +68,17 @@ function create( req ) {
 			},
 			cards: cardData
 		};
-		updateNextDealDate(newHouse);
 		houseDB.houses.push(newHouse);
 	}
 	else {
 		// If the house already exists, just add this user to that house.
-		throw "This house already exists!";
+		throw "This house already exists!"
 	}
-}
+};
 
-// TODO: Re-rolling!
 function reroll(req) {
-	var house = getHouseFromReq(req);
-	if ( house !== null ) {
-		// Update the time at which
-	}
-}
+	
+};
 module.exports.reroll = reroll;
 
 /**
@@ -97,7 +90,7 @@ module.exports.reroll = reroll;
  */
 function deal(req) {
 	var house = getHouseFromReq(req);
-	if ( house !== null ) {
+	if ( house != null ) {
 		if ( house.users.length > 0 ) {
 			// Fisher-Yates shuffle, thanks to internet
 			shuffle(house.cards.cards);
@@ -131,12 +124,6 @@ function deal(req) {
 				// Increment user index and wrap around if it's too big
 				userIndex = (userIndex + 1) % house.users.length;
 			}
-			// Calculate the time for the next deal
-			var now = Date.now();
-			house.last_deal = new Date(now);
-
-			// Round off the time, update the next
-			updateNextDealDate(house);
 		}
 	}
 }
@@ -147,30 +134,11 @@ module.exports.deal = deal;
  */
 function getUsers(req) {
 	var house = getHouseFromReq(req);
-	if ( house !== null ) {
+	if ( house != null ) {
 		return house.users;
 	}
-}
+};
 module.exports.getUsers = getUsers;
-
-/**
- * Returns the user object specified by 'id'. If id is not
- * specified, it will return the user who is making this HTTP request.
- */
-function getUser(req, id) {
-	var userid = id || req.cookies.userid;
-	var house = getHouseFromReq(req);
-	if ( house !== null ) {
-		var users = house.users;
-		for ( var i = 0; i < users.length; ++i ) {
-			if ( users[i].userid == userid ) {
-				return users[i];
-			}  
-		}
-	}
-	return null;
-}
-module.exports.getUser = getUser;
 
 /**
  * Gets a card by it's id.
@@ -195,7 +163,7 @@ function getAllPending(req) {
 		}
 	}
 	return retList;
-}
+};
 module.exports.getAllPending = getAllPending;
 
 function getAllCompleted(req) {
@@ -207,7 +175,7 @@ function getAllCompleted(req) {
 		}
 	}
 	return retList;
-}
+};
 module.exports.getAllCompleted = getAllCompleted;
 
 /**
@@ -238,8 +206,7 @@ function addUserToHouse(req, res) {
 	catch (e) {
 		console.log("ERROR! HOUSE CODE DOESN'T EXIST!");
 		return res.render('landing', {
-			'error': "A house with the given code does not exist.",
-			'randomHouseCode': getNewHouseCode()
+			'error': "A house with the given code does not exist."
 		});
 	}
 
@@ -257,10 +224,10 @@ function addUserToHouse(req, res) {
  */
 function getAllCards( req ) {
 	var house = getHouseFromReq( req );
-	if ( house !== null ) {
+	if ( house != null ) {
 		return house.cards;
 	}
-}
+};
 module.exports.getAllCards = getAllCards;
 
 /**
@@ -283,9 +250,10 @@ function getNewHouseCode() {
 			var letter = Math.floor(Math.random() * validChars.length) % (validChars.length);
 			houseCode += validChars[letter];
 		}
-	} while ( getHouse(houseCode) !== null );
+	} while ( getHouse(houseCode) != null );
 	console.log('Generated Random House Code: ' + houseCode);
 	return houseCode;
+<<<<<<< HEAD
 }
 
 /**
@@ -489,6 +457,9 @@ function updateNextDealDate(houseObj) {
 	houseObj.next_deal = new Date( lastDeal.getTime() + (dayOffset * 24 + hourOffset) * 60 * 60 * 1000 );
 }
 module.exports.updateNextDealDate = updateNextDealDate;
+=======
+};
+>>>>>>> parent of c595adb... Fixing some issues with house.next_deal and house.last_deal
 
 /**
  * Returns true if we are within the time period where
