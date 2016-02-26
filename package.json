@@ -1,14 +1,20 @@
-{
-  "name": "IntroHCI",
+  {
+  "name": "ChoreChampions",
   "version": "0.0.1",
-  "author": "Intro HCI Staff",
-
+  "author": "Dexter Friedman",
+  "contributors": [
+    {
+      "name": "Alex Tang"
+    },
+    {
+      "name": "Stephen Trinh"
+    }
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/IntroHCI/lab4"
+    "url": "https://github.com/atang020/ChoreChampions"
   },
   "license": "MIT",
-
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -17,7 +23,8 @@
     "express": "3.x",
     "express3-handlebars": "*",
     "mongodb": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "shuffle-array": "*"
   },
   "engines": {
     "node": "0.10.x"
