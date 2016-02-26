@@ -10,13 +10,11 @@
       "name": "Stephen Trinh"
     }
   ],
-
   "repository": {
     "type": "git",
-    "url": "https://github.com/afrodynamics/ChoreChampions"
+    "url": "https://github.com/atang020/ChoreChampions"
   },
   "license": "MIT",
-
   "private": true,
   "scripts": {
     "start": "node app.js"
