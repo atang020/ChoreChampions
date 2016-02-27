@@ -23,5 +23,13 @@ $(document).on('ready', function() {
 		}
 	});
 
+	$('#info-hl').click(function() {
+		ga("send", "event", "info", "click");
+	});
+
+	$('#next-btn').click(function() {
+		ga("send", "event", "next", "click");
+	});
+
 
 });
